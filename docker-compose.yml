@@ -1,0 +1,97 @@
+#
+# Useful references:
+# https://docs.docker.com/compose/compose-file/
+# https://docs.docker.com/compose/reference/overview/#use--f-to-specify-name-and-path-of-one-or-more-compose-files
+# https://docs.docker.com/compose/reference/envvars/
+#
+#########################################################################
+# WARNING: This file is generated. Do not make changes to this file.    #
+# They will be overwritten on update. If you want to make additions to  #
+# this file, you can create a `docker-compose.override.yml` file in the #
+# same directory and it will be merged into this file at runtime. You   #
+# can also manage various settings used in this file from the           #
+# ./bwdata/config.yml file for your installation.                       #
+#########################################################################
+
+version: '3'
+
+services:
+  web:
+    image: yiisoftware/yii2-php:7.4-apache
+    container_name: rmb-web
+    restart: always
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache
+      - ./app:/app
+    environment:
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+
+  db:
+    image: mariadb
+    container_name: rmb-db
+    restart: always
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      - MARIADB_DATABASE=${MYSQL_DATABASE}
+      - MARIADB_USER=${MYSQL_USER}
+      - MARIADB_PASSWORD=${MYSQL_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+
+  n8n:
+    build: n8n/
+    container_name: rmb-n8n
+    restart: always
+    stop_grace_period: 60s
+    environment:
+      - LANG=ru_RU.UTF-8
+      - LANGUAGE=ru_RU:en
+      - LC_ALL=ru_RU.UTF-8
+      - GENERIC_TIMEZONE
+      - TZ
+      - CRON_START
+      - CRON_PURGE_START
+      - N8N_BASIC_AUTH_ACTIVE
+      - N8N_BASIC_AUTH_USER
+      - N8N_BASIC_AUTH_PASSWORD
+      - EXECUTIONS_TIMEOUT_MAX
+      - NODE_ENV=production
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MK_BACKUP_ENCRYPT_PASSWORD
+      - MK_BACKUP_BINARY
+      - MK_BACKUP_EXPORT
+      - MK_BACKUP_HIDE_SENSITIVE
+      - PURGE_OLD_BACKUP
+      - PURGE_N_PIECE
+      - GIT_USING
+      - GIT_URL
+      - GIT_USER
+      - GIT_PASSWORD
+      - GIT_CONFIG_USERNAME
+      - GIT_CONFIG_USERMAIL
+      - ERROR_NOTIFICATION_TELEGRAM
+      - ERROR_NOTIFICATION_EMAIL
+      - SMTP_SERVER
+      - SMTP_PORT
+      - SMTP_USER
+      - SMTP_PASSWORD
+      - SMTP_SSL
+      - SMTP_FROM_MAIL
+      - SMTP_TO_MAIL
+      - TELEGRAM_ACCESS_TOKEN
+      - TELEGRAM_CHATID
+    volumes:
+      - ./n8n/data:/root/.n8n
+      - ./backups:/home/node/backup
+      - ./data-export:/home/node/data-export
+      - ./n8n/docker-entrypoint.sh:/docker-entrypoint.sh
+    depends_on:
+      - web

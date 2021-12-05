@@ -1,0 +1,4 @@
+/.env
+/backups/
+/db/
+/n8n/data/
