@@ -2,6 +2,9 @@
 
 Real Mikrotik Backup - это система централизованного создания и хранения резервных копий оборудования Mikrotik с функцией отображения произведенных изменений конфигурации.
 
+![https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=flat](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=flat)
+![https://img.shields.io/badge/Powered_by-N8N-orange.svg?style=flat](https://img.shields.io/badge/Powered_by-N8N-orange.svg?style=flat)
+
 ## Возможности
 
 - Создание бинарных и экспортных резервных копий
