@@ -38,9 +38,9 @@ cp .env.sample .env
 #Запуск контейнеров
 if [[ $advanced == "1" ]]
 then
-	docker-compose -f docker-compose-advanced.yml up -d
+	docker-compose -f docker-compose-advanced.yml up --build -d
 else
-	docker-compose up -d
+	docker-compose up --build -d
 fi
 
 #Инициализация базы данных
@@ -50,4 +50,4 @@ docker exec -it rmb-web yii migrate --interactive=0
 chown -R www-data:www-data ./app/
 
 #Запуск скрипта установки учетной записи администартора
-./webadminchange.sh
+./scripts/webadminchange.sh
