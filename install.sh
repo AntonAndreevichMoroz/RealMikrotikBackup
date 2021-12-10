@@ -44,7 +44,17 @@ else
 fi
 
 #Инициализация базы данных
-docker exec -it rmb-web yii migrate --interactive=0
+while :
+do
+	sleep 5
+	docker exec -it rmb-web yii migrate --interactive=0
+	if [[ $? -eq 0 ]]
+	then
+		break
+	else
+		continue
+	fi
+done
 
 #Установка владельца на папку web файлоы
 chown -R www-data:www-data ./app/
