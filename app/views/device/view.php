@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
         <?= Html::a('Сделать бекап устройства', ['backupone', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+
         <?php
             if(Yii::$app->request->get('resultn8n') == "OK"){
                echo Html::tag('div', 'Запрос отправлен успешно');
@@ -51,5 +52,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'lastbad:datetime',
         ],
     ]) ?>
+
+        <?php
+            if(Yii::$app->request->get('downloaderror') == "true"){
+               echo Html::tag('div', 'Ошибка получения файла для скачивания');
+            }
+        ?>
+        <?= Html::a('Скачать последний бинарный бекап', ['downloadbin', 'id' => $model->id, 'name' => $model->name], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Скачать последний экспортный бекап', ['downloadrsc', 'id' => $model->id, 'name' => $model->name], ['class' => 'btn btn-warning']) ?>
 
 </div>

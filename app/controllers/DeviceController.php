@@ -26,7 +26,6 @@ class DeviceController extends Controller
                     'rules' => [
                         [
                             'allow' => true,
-                            'actions' => ['index', 'view', 'create', 'update', 'delete', 'backupone', 'backupall'],
                             'roles' => ['@'],
                         ],
                     ],
@@ -159,6 +158,30 @@ class DeviceController extends Controller
             return $this->redirect(['index', 'resultn8n' => "OK"]);
         } else {
             return $this->redirect(['index', 'resultn8n' => "FAIL"]);
+        }
+    }
+
+    public function actionDownloadbin($id, $name)
+    {
+        $response = \Yii::$app->n8n->get('download', [ 'type' => 'bin', 'id' => $id, 'name' => $name ])->send();
+        if ($response->isOk) {
+            $content = $response->content;
+            $filename = $id . '_' . $name . '_last.backup';
+            return \Yii::$app->response->sendContentAsFile($content, $filename);
+        } else {
+            return $this->redirect(['view', 'id' => $id, 'downloaderror' => "true"]);
+        }
+    }
+
+    public function actionDownloadrsc($id, $name)
+    {
+        $response = \Yii::$app->n8n->get('download', [ 'type' => 'rsc', 'id' => $id, 'name' => $name ])->send();
+        if ($response->isOk) {
+            $content = $response->content;
+            $filename = $id . '_' . $name . '_last.rsc';
+            return \Yii::$app->response->sendContentAsFile($content, $filename);
+        } else {
+            return $this->redirect(['view', 'id' => $id, 'downloaderror' => "true"]);
         }
     }
 

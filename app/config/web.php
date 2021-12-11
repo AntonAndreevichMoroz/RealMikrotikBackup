@@ -45,6 +45,10 @@ $config = [
                 'login' => 'site/login',
             ],
         ],
+        'n8n' => [
+            'class' => 'yii\httpclient\Client',
+            'baseUrl' => 'http://n8n:5678/webhook/',
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
