@@ -46,13 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => array("OK"=>"OK","BAD"=>"BAD"),
             ],
-            [
-                'attribute' => 'active',
-                'value' => function ($data) {
-                    return $data->active == "1" ? "ДА" : "Нет";
-                },
-                'filter' => array("1"=>"ДА","0"=>"НЕТ"),
-            ],
+            'active:boolean',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

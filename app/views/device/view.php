@@ -46,10 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'laststatus',
 		'contentOptions' => ['style' => ($model->laststatus == "BAD") ? 'color: red' : 'color: green'],
             ],
-            [
-                'attribute' => 'active',
-                'value' => ($model->active == "1") ? "ДА" : "НЕТ",
-            ],
+            'active:boolean',
             'lastok:datetime',
             'lastbad:datetime',
         ],
