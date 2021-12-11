@@ -27,6 +27,13 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'nullDisplay' => '-',
+            'dateFormat' => 'd-M-Y',
+            'datetimeFormat' => 'd-M-Y HH:mm:ss',
+            'timeFormat' => 'HH:mm:ss',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => false,

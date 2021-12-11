@@ -19,6 +19,7 @@ class DeviceSearch extends Device
         return [
             [['id', 'sshport', 'active'], 'integer'],
             [['name', 'ip_address', 'username', 'password', 'laststatus'], 'safe'],
+            [['lastok', 'lastbad'], 'datetime']
         ];
     }
 

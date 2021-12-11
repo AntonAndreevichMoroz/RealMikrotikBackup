@@ -35,6 +35,7 @@ class Device extends \yii\db\ActiveRecord
             [['name', 'username', 'password'], 'string', 'max' => 100],
             [['ip_address'], 'ip', 'ipv6' => false, 'subnet' => false],
             [['active'], 'number', 'max' => 1],
+            [['lastok', 'lastbad'], 'datetime'],
         ];
     }
 
@@ -52,6 +53,8 @@ class Device extends \yii\db\ActiveRecord
             'password' => 'Пароль',
             'active' => 'Активно?',
             'laststatus' => 'Последний статус',
+            'lastok' => 'Последняя удачная попытка',
+            'lastbad' => 'Последняя попытка с ошибкой',
         ];
     }
 }

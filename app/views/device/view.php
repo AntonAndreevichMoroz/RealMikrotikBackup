@@ -42,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'ip_address',
             'sshport',
             'username',
-//            'laststatus',
             [
                 'attribute' => 'laststatus',
 		'contentOptions' => ['style' => ($model->laststatus == "BAD") ? 'color: red' : 'color: green'],
@@ -51,6 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'active',
                 'value' => ($model->active == "1") ? "ДА" : "НЕТ",
             ],
+            'lastok:datetime',
+            'lastbad:datetime',
         ],
     ]) ?>
 
