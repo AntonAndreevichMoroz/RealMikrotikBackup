@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Devices */
+/* @var $model app\models\Device */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="devices-view">
+<div class="device-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

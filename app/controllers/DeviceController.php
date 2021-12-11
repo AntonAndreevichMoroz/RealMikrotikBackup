@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\Devices;
-use app\models\DevicesSearch;
+use app\models\Device;
+use app\models\DeviceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
@@ -13,7 +13,7 @@ use yii\httpclient\Client;
 /**
  * DevicesController implements the CRUD actions for Devices model.
  */
-class DevicesController extends Controller
+class DeviceController extends Controller
 {
     /**
      * @inheritDoc
@@ -48,12 +48,12 @@ class DevicesController extends Controller
     }
 
     /**
-     * Lists all Devices models.
+     * Lists all Device models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DevicesSearch();
+        $searchModel = new DeviceSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -63,7 +63,7 @@ class DevicesController extends Controller
     }
 
     /**
-     * Displays a single Devices model.
+     * Displays a single Device model.
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -76,13 +76,13 @@ class DevicesController extends Controller
     }
 
     /**
-     * Creates a new Devices model.
+     * Creates a new Device model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Devices();
+        $model = new Device();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -98,7 +98,7 @@ class DevicesController extends Controller
     }
 
     /**
-     * Updates an existing Devices model.
+     * Updates an existing Device model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return mixed
@@ -118,7 +118,7 @@ class DevicesController extends Controller
     }
 
     /**
-     * Deletes an existing Devices model.
+     * Deletes an existing Device model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return mixed
@@ -163,7 +163,7 @@ class DevicesController extends Controller
     }
 
     /**
-     * Finds the Devices model based on its primary key value.
+     * Finds the Device model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
      * @return Devices the loaded model
@@ -171,7 +171,7 @@ class DevicesController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Devices::findOne($id)) !== null) {
+        if (($model = Device::findOne($id)) !== null) {
             return $model;
         }
 

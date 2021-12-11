@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\DevicesSearch */
+/* @var $searchModel app\models\DeviceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Устройства';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="devices-index">
+<div class="device-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

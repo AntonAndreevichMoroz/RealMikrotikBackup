@@ -13,14 +13,14 @@ use Yii;
  * @property string $username
  * @property string $password
  */
-class Devices extends \yii\db\ActiveRecord
+class Device extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'devices';
+        return 'device';
     }
 
     /**

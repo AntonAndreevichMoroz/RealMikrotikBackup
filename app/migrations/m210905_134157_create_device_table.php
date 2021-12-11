@@ -5,14 +5,14 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `{{%devices}}`.
  */
-class m210905_134157_create_devices_table extends Migration
+class m210905_134157_create_device_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('{{%devices}}', [
+        $this->createTable('{{%device}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string(100)->notNull(),
             'ip_address' => $this->string(15)->notNull(),
@@ -22,7 +22,7 @@ class m210905_134157_create_devices_table extends Migration
         ]);
 
         $this->createIndex('idx_unique_ip_address_sshport',
-                'devices',
+                'device',
                 ['ip_address', 'sshport'],
                 true);
     }
@@ -32,6 +32,6 @@ class m210905_134157_create_devices_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%devices}}');
+        $this->dropTable('{{%device}}');
     }
 }

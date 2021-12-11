@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Devices;
+use app\models\Device;
 
 /**
  * DevicesSearch represents the model behind the search form of `app\models\Devices`.
  */
-class DevicesSearch extends Devices
+class DeviceSearch extends Device
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class DevicesSearch extends Devices
      */
     public function search($params)
     {
-        $query = Devices::find();
+        $query = Device::find();
 
         // add conditions that should always apply here
 
