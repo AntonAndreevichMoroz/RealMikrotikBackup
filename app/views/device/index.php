@@ -19,9 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Запустить бекап вручную', ['backupall'], ['class' => 'btn btn-warning']) ?>
         <?php
             if(Yii::$app->request->get('resultn8n') == "OK"){
-               echo Html::tag('div', 'Запрос отправлен успешно');
+               echo Html::tag('div', 'Запрос отправлен успешно', ['class' => 'alert alert-success']);
             } elseif(Yii::$app->request->get('resultn8n') == "FAIL") {
-               echo Html::tag('div', 'Ошибка отправки запроса');
+               echo Html::tag('div', 'Ошибка отправки запроса', ['class' => 'alert alert-danger']);
             }
         ?>
     </p>

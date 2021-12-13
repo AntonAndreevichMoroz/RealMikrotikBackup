@@ -28,9 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php
             if(Yii::$app->request->get('resultn8n') == "OK"){
-               echo Html::tag('div', 'Запрос отправлен успешно');
+              echo Html::tag('div', 'Запрос отправлен успешно', ['class' => 'alert alert-success']);
             } elseif(Yii::$app->request->get('resultn8n') == "FAIL") {
-               echo Html::tag('div', 'Ошибка отправки запроса');
+              echo Html::tag('div', 'Ошибка отправки запроса', ['class' => 'alert alert-danger']);
             }
         ?>
     </p>
@@ -55,10 +55,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php
             if(Yii::$app->request->get('downloaderror') == "true"){
-               echo Html::tag('div', 'Ошибка получения файла для скачивания');
+               echo Html::tag('div', 'Ошибка получения файла для скачивания', ['class' => 'alert alert-danger']);
             }
         ?>
-        <?= Html::a('Скачать последний бинарный бекап', ['downloadbin', 'id' => $model->id, 'name' => $model->name], ['class' => 'btn btn-warning']) ?>
-        <?= Html::a('Скачать последний экспортный бекап', ['downloadrsc', 'id' => $model->id, 'name' => $model->name], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Скачать последний бинарный бекап', ['downloadbin', 'id' => $model->id, 'name' => $model->name], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Скачать последний экспортный бекап', ['downloadrsc', 'id' => $model->id, 'name' => $model->name], ['class' => 'btn btn-success']) ?>
 
 </div>
