@@ -25,7 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
         <?= Html::a('Сделать бекап устройства', ['backupone', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Тест подключения', ['view', 'id' => $model->id, 'testconn' => 1], ['class' => 'btn btn-info']) ?>
 
+        <?php
+            if(Yii::$app->request->get('testconn') == 1){
+              echo Yii::$app->n8n->get('testconnection', ['id' => $model->id])->send()->content;
+            }
+        ?>
         <?php
             if(Yii::$app->request->get('resultn8n') == "OK"){
               echo Html::tag('div', 'Запрос отправлен успешно', ['class' => 'alert alert-success']);
