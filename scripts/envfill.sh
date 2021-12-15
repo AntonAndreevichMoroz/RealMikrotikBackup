@@ -91,7 +91,7 @@ then
 		read -r -p "Укажите URL репозитория Git: " GIT_URL
 		if [[ $GIT_URL != "" ]]
 		then
-			sed -i "s/^GIT_URL.*$/GIT_URL=$GIT_URL/g" .env
+			sed -i "s~^GIT_URL.*$~GIT_URL=$GIT_URL~g" .env
 			break
 		else
 		echo -e "${RED}Значение не должно быть пустым${NC}"
