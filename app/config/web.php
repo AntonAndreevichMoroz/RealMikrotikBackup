@@ -9,6 +9,18 @@ $config = [
     'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'container' => [
+        'definitions' => [
+            \yii\widgets\LinkPager::class => \yii\bootstrap4\LinkPager::class,
+            'yii\bootstrap4\LinkPager' => [
+                'options' => ['class' => 'pagination justify-content-center'],
+                'firstPageLabel' => 'Первая',
+                'lastPageLabel' => 'Последняя',
+                'nextPageLabel' => '>>',
+                'prevPageLabel' => '<<',
+            ]
+        ],
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
