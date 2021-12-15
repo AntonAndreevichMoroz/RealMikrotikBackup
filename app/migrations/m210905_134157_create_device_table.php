@@ -16,7 +16,7 @@ class m210905_134157_create_device_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(100)->notNull(),
             'ip_address' => $this->string(15)->notNull(),
-            'sshport' => $this->smallInteger(5)->notNull(),
+            'sshport' => $this->smallInteger(5)->notNull()->unsigned(),
             'username' => $this->string(100)->notNull(),
             'password' => $this->string(100)->notNull(),
         ]);
