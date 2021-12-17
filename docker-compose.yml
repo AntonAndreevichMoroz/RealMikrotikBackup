@@ -79,15 +79,19 @@ services:
       - GIT_CONFIG_USERMAIL
       - ERROR_NOTIFICATION_TELEGRAM
       - ERROR_NOTIFICATION_EMAIL
+      - REPORT_SEND_TELEGRAM
+      - REPORT_SEND_EMAIL
       - SMTP_SERVER
       - SMTP_PORT
       - SMTP_USER
       - SMTP_PASSWORD
       - SMTP_SSL
       - SMTP_FROM_MAIL
-      - SMTP_TO_MAIL
+      - SMTP_TO_MAIL_NOTIFY
+      - SMTP_TO_MAIL_REPORT
       - TELEGRAM_ACCESS_TOKEN
-      - TELEGRAM_CHATID
+      - TELEGRAM_CHATID_NOTIFY
+      - TELEGRAM_CHATID_REPORT
     volumes:
       - ./n8n/data:/root/.n8n
       - ./backups:/home/node/backup

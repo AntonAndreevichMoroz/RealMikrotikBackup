@@ -1160,6 +1160,131 @@
           3560,
           100
         ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $env.REPORT_SEND_TELEGRAM ? $env.REPORT_SEND_TELEGRAM : \"false\"}}",
+                "value2": "true"
+              },
+              {
+                "value1": "={{ $env.REPORT_SEND_EMAIL ? $env.REPORT_SEND_EMAIL : \"false\"}}",
+                "value2": "true"
+              }
+            ]
+          },
+          "combineOperation": "any"
+        },
+        "name": "IF14",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          4480,
+          220
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "=SELECT\n\tCOUNT(*) 'All',\n\tCOUNT(IF(active = '1', 1, NULL)) 'Active',\n\tCOUNT(IF(laststatus = 'BAD' AND active = '1', 1, NULL)) 'Active with error'\nFROM\n\tdevice"
+        },
+        "name": "MySQL4",
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 1,
+        "position": [
+          4660,
+          220
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "mySql": {
+            "id": "1",
+            "name": "MySQL account"
+          }
+        },
+        "notes": "Get devices list"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $env.TELEGRAM_CHATID_REPORT }}",
+          "text": "=Актуальные данные резервного копирования Mikrotik\nВсего устройств в базе: {{ $node[\"MySQL4\"].json[\"All\"] }}\nАктивных устройств: {{ $node[\"MySQL4\"].json[\"Active\"] }}\nАктивных устройств с ошибками: {{ $node[\"MySQL4\"].json[\"Active with error\"] }}\nВремя завершения задания: {{new Date().toLocaleDateString()}} {{new Date().toLocaleTimeString()}}",
+          "additionalFields": {}
+        },
+        "name": "Telegram",
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1,
+        "position": [
+          5060,
+          100
+        ],
+        "credentials": {
+          "telegramApi": {
+            "id": "5",
+            "name": "Telegram account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $env.REPORT_SEND_TELEGRAM ? $env.REPORT_SEND_TELEGRAM : \"false\"}}",
+                "value2": "true"
+              }
+            ]
+          }
+        },
+        "name": "IF15",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          4860,
+          100
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $env.REPORT_SEND_EMAIL ? $env.REPORT_SEND_EMAIL : \"false\"}}",
+                "value2": "true"
+              }
+            ]
+          }
+        },
+        "name": "IF16",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          4860,
+          340
+        ]
+      },
+      {
+        "parameters": {
+          "fromEmail": "={{ $env.SMTP_FROM_MAIL }}",
+          "toEmail": "={{ $env.SMTP_TO_MAIL_REPORT }}",
+          "subject": "RMBackup Notification",
+          "text": "=Актуальные данные резервного копирования Mikrotik\nВсего устройств в базе: {{ $node[\"MySQL4\"].json[\"All\"] }}\nАктивных устройств: {{ $node[\"MySQL4\"].json[\"Active\"] }}\nАктивных устройств с ошибками: {{ $node[\"MySQL4\"].json[\"Active with error\"] }}\nВремя завершения задания: {{new Date().toLocaleDateString()}} {{new Date().toLocaleTimeString()}}",
+          "options": {}
+        },
+        "name": "Send Email",
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 1,
+        "position": [
+          5060,
+          340
+        ],
+        "credentials": {
+          "smtp": {
+            "id": "4",
+            "name": "SMTP account"
+          }
+        }
       }
     ],
     "connections": {
@@ -1356,7 +1481,13 @@
       },
       "IF3": {
         "main": [
-          [],
+          [
+            {
+              "node": "IF14",
+              "type": "main",
+              "index": 0
+            }
+          ],
           [
             {
               "node": "SplitInBatches",
@@ -1732,10 +1863,59 @@
             }
           ]
         ]
+      },
+      "IF14": {
+        "main": [
+          [
+            {
+              "node": "MySQL4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "MySQL4": {
+        "main": [
+          [
+            {
+              "node": "IF15",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "IF16",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF15": {
+        "main": [
+          [
+            {
+              "node": "Telegram",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF16": {
+        "main": [
+          [
+            {
+              "node": "Send Email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "createdAt": "2021-11-15T19:15:31.061Z",
-    "updatedAt": "2021-12-11T06:41:36.307Z",
+    "updatedAt": "2021-12-17T17:38:07.292Z",
     "settings": {
       "errorWorkflow": "3"
     },
@@ -1797,7 +1977,7 @@
       {
         "parameters": {
           "fromEmail": "={{ $env.SMTP_FROM_MAIL }}",
-          "toEmail": "={{ $env.SMTP_TO_MAIL }}",
+          "toEmail": "={{ $env.SMTP_TO_MAIL_NOTIFY }}",
           "subject": "RMBackup Notification",
           "text": "=Ошибка в процессе: {{ $node[\"Error Trigger\"].json[\"workflow\"][\"name\"] }} (ID: {{ $node[\"Error Trigger\"].json[\"workflow\"][\"id\"] }})\nТип ошибки: {{ $node[\"Error Trigger\"].json[\"execution\"][\"error\"][\"name\"] }}\nОшибка в узле: {{ $node[\"Error Trigger\"].json[\"execution\"][\"error\"][\"node\"][\"name\"] }}\nТекст ошибки: {{ $node[\"Error Trigger\"].json[\"execution\"][\"error\"][\"message\"] }}\nПодробное описание ошибки:\n{{ $node[\"Error Trigger\"].json[\"execution\"][\"error\"][\"stack\"] }}",
           "options": {}
@@ -1818,7 +1998,7 @@
       },
       {
         "parameters": {
-          "chatId": "={{ $env.TELEGRAM_CHATID }}",
+          "chatId": "={{ $env.TELEGRAM_CHATID_NOTIFY }}",
           "text": "=Ошибка в процессе: {{ $node[\"Error Trigger\"].json[\"workflow\"][\"name\"] }} (ID: {{ $node[\"Error Trigger\"].json[\"workflow\"][\"id\"] }})\nТип ошибки: {{ $node[\"Error Trigger\"].json[\"execution\"][\"error\"][\"name\"] }}\nОшибка в узле: {{ $node[\"Error Trigger\"].json[\"execution\"][\"error\"][\"node\"][\"name\"] }}\nТекст ошибки: {{ $node[\"Error Trigger\"].json[\"execution\"][\"error\"][\"message\"] }}\nПодробное описание ошибки:\n{{ $node[\"Error Trigger\"].json[\"execution\"][\"error\"][\"stack\"] }}",
           "additionalFields": {}
         },
@@ -1918,7 +2098,7 @@
       }
     },
     "createdAt": "2021-11-27T12:10:40.170Z",
-    "updatedAt": "2021-11-30T05:34:15.034Z",
+    "updatedAt": "2021-12-17T17:32:12.338Z",
     "settings": {},
     "staticData": null
   },
