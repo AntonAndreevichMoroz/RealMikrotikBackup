@@ -326,7 +326,7 @@
         "type": "n8n-nodes-base.ssh",
         "typeVersion": 1,
         "position": [
-          1440,
+          1640,
           40
         ],
         "notesInFlow": true,
@@ -350,7 +350,7 @@
         "type": "n8n-nodes-base.ssh",
         "typeVersion": 1,
         "position": [
-          1640,
+          1840,
           40
         ],
         "notesInFlow": true,
@@ -519,7 +519,7 @@
         "type": "n8n-nodes-base.ssh",
         "typeVersion": 1,
         "position": [
-          2040,
+          2240,
           40
         ],
         "notesInFlow": true,
@@ -699,7 +699,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          2240,
+          2440,
           40
         ]
       },
@@ -732,7 +732,7 @@
             "string": [
               {
                 "name": "filenamebin",
-                "value": "={{$node[\"SplitInBatches\"].json[\"id\"]}}_{{$node[\"SplitInBatches\"].json[\"name\"]}}_{{new Date().toLocaleDateString()}}_{{new Date().getHours()}}.{{new Date().getMinutes()}}.{{new Date().getSeconds()}}.backup"
+                "value": "={{$node[\"SplitInBatches\"].json[\"id\"]}}_{{$node[\"SplitInBatches\"].json[\"name\"]}}_{{ $node[\"CurrentTime1\"].json[\"time\"] }}.backup"
               },
               {
                 "name": "filenameonmikrotik",
@@ -750,7 +750,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 1,
         "position": [
-          1240,
+          1440,
           40
         ]
       },
@@ -794,7 +794,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          1540,
+          1740,
           -120
         ]
       },
@@ -814,7 +814,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          1740,
+          1940,
           -200
         ]
       },
@@ -826,7 +826,7 @@
         "type": "n8n-nodes-base.writeBinaryFile",
         "typeVersion": 1,
         "position": [
-          1840,
+          2040,
           40
         ]
       },
@@ -1032,7 +1032,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          2140,
+          2340,
           -120
         ]
       },
@@ -1052,7 +1052,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 1,
         "position": [
-          2340,
+          2540,
           -220
         ]
       },
@@ -1285,6 +1285,22 @@
             "name": "SMTP account"
           }
         }
+      },
+      {
+        "parameters": {
+          "value": "={{ new Date()}}",
+          "dataPropertyName": "time",
+          "custom": true,
+          "toFormat": "DD.MM.YYYY_HH.mm.ss",
+          "options": {}
+        },
+        "name": "CurrentTime1",
+        "type": "n8n-nodes-base.dateTime",
+        "typeVersion": 1,
+        "position": [
+          1240,
+          40
+        ]
       }
     ],
     "connections": {
@@ -1336,7 +1352,7 @@
         "main": [
           [
             {
-              "node": "Set",
+              "node": "CurrentTime1",
               "type": "main",
               "index": 0
             }
@@ -1912,10 +1928,21 @@
             }
           ]
         ]
+      },
+      "CurrentTime1": {
+        "main": [
+          [
+            {
+              "node": "Set",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "createdAt": "2021-11-15T19:15:31.061Z",
-    "updatedAt": "2021-12-17T17:38:07.292Z",
+    "updatedAt": "2021-12-17T18:26:38.117Z",
     "settings": {
       "errorWorkflow": "3"
     },
