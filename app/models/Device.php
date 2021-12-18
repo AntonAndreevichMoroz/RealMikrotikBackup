@@ -29,12 +29,15 @@ class Device extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'ip_address', 'sshport', 'username', 'password'], 'required'],
-            [['name', 'ip_address', 'sshport', 'username'], 'trim'],
+            [['name', 'ip_address', 'sshport', 'username'], 'required'],
+            [['password'], 'required', 'when' => function($model) {return $model->sshuse == '0';}, 'enableClientValidation' => false],
+            [['sshkey'], 'required', 'when' => function($model) {return $model->sshuse == '1';}, 'enableClientValidation' => false],
+            [['name', 'ip_address', 'sshport', 'username', 'sshkey'], 'trim'],
             [['sshport'], 'number', 'max' => 65535],
+            [['sshkey'], 'match', 'pattern' => '/^-----BEGIN OPENSSH PRIVATE KEY-----\s[\s\S]+?\s-----END OPENSSH PRIVATE KEY-----$/'],
             [['name', 'username', 'password'], 'string', 'max' => 100],
             [['ip_address'], 'ip', 'ipv6' => false, 'subnet' => false],
-            [['active'], 'boolean'],
+            [['active', 'sshuse'], 'boolean'],
         ];
     }
 
@@ -49,7 +52,9 @@ class Device extends \yii\db\ActiveRecord
             'ip_address' => 'IP адрес',
             'sshport' => 'SSH порт',
             'username' => 'Имя пользователя',
+            'sshuse' => 'Использовать SSH ключ?',
             'password' => 'Пароль',
+            'sshkey' => 'Приватный SSH ключ',
             'active' => 'Активно?',
             'laststatus' => 'Последний статус',
             'lastok' => 'Последняя удачная попытка',

@@ -319,55 +319,6 @@
       },
       {
         "parameters": {
-          "command": "=/system backup save{{ $env.MK_BACKUP_ENCRYPT_PASSWORD ? \" dont-encrypt=no encryption=aes-sha256\" : \" dont-encrypt=yes\"}} name={{$node[\"Set\"].json[\"filenameonmikrotik\"]}}{{ $env.MK_BACKUP_ENCRYPT_PASSWORD ? \" password=\" +  $env.MK_BACKUP_ENCRYPT_PASSWORD : \"\"}}",
-          "cwd": "={{}}"
-        },
-        "name": "SSH",
-        "type": "n8n-nodes-base.ssh",
-        "typeVersion": 1,
-        "position": [
-          1640,
-          40
-        ],
-        "notesInFlow": true,
-        "alwaysOutputData": true,
-        "credentials": {
-          "sshPassword": {
-            "id": "2",
-            "name": "SSH Password account"
-          }
-        },
-        "continueOnFail": true,
-        "notes": "Create binary backup"
-      },
-      {
-        "parameters": {
-          "resource": "file",
-          "operation": "download",
-          "path": "={{$node[\"Set\"].json[\"filenameonmikrotik\"]}}"
-        },
-        "name": "SSH1",
-        "type": "n8n-nodes-base.ssh",
-        "typeVersion": 1,
-        "position": [
-          1840,
-          40
-        ],
-        "notesInFlow": true,
-        "retryOnFail": true,
-        "maxTries": 2,
-        "waitBetweenTries": 3000,
-        "credentials": {
-          "sshPassword": {
-            "id": "2",
-            "name": "SSH Password account"
-          }
-        },
-        "continueOnFail": true,
-        "notes": "Download binary backup"
-      },
-      {
-        "parameters": {
           "conditions": {
             "boolean": [],
             "string": [
@@ -409,28 +360,6 @@
         ]
       },
       {
-        "parameters": {
-          "command": "=/export{{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? \" hide-sensitive\" : \"\" }} file={{$node[\"Set1\"].json[\"filenamersc\"]}}",
-          "cwd": "={{}}"
-        },
-        "name": "SSH2",
-        "type": "n8n-nodes-base.ssh",
-        "typeVersion": 1,
-        "position": [
-          1440,
-          380
-        ],
-        "notesInFlow": true,
-        "credentials": {
-          "sshPassword": {
-            "id": "2",
-            "name": "SSH Password account"
-          }
-        },
-        "continueOnFail": true,
-        "notes": "Create export backup"
-      },
-      {
         "parameters": {},
         "name": "DontExportBackupCreate",
         "type": "n8n-nodes-base.noOp",
@@ -452,88 +381,6 @@
       },
       {
         "parameters": {
-          "resource": "file",
-          "operation": "download",
-          "path": "={{$node[\"Set1\"].json[\"filenamersc\"]}}"
-        },
-        "name": "SSH3",
-        "type": "n8n-nodes-base.ssh",
-        "typeVersion": 1,
-        "position": [
-          1640,
-          380
-        ],
-        "notesInFlow": true,
-        "retryOnFail": true,
-        "maxTries": 2,
-        "waitBetweenTries": 3000,
-        "credentials": {
-          "sshPassword": {
-            "id": "2",
-            "name": "SSH Password account"
-          }
-        },
-        "continueOnFail": true,
-        "notes": "Download binary backup"
-      },
-      {
-        "parameters": {
-          "fileName": "={{$node[\"Set1\"].json[\"folderforrsc\"]}}{{$node[\"Set1\"].json[\"filenamersc\"]}}"
-        },
-        "name": "Write Binary File1",
-        "type": "n8n-nodes-base.writeBinaryFile",
-        "typeVersion": 1,
-        "position": [
-          1840,
-          380
-        ]
-      },
-      {
-        "parameters": {
-          "command": "=/file remove \"{{$node[\"Set1\"].json[\"filenamersc\"]}}\"",
-          "cwd": "={{}}"
-        },
-        "name": "SSH4",
-        "type": "n8n-nodes-base.ssh",
-        "typeVersion": 1,
-        "position": [
-          2040,
-          380
-        ],
-        "notesInFlow": true,
-        "credentials": {
-          "sshPassword": {
-            "id": "2",
-            "name": "SSH Password account"
-          }
-        },
-        "continueOnFail": true,
-        "notes": "Delete binary backup"
-      },
-      {
-        "parameters": {
-          "command": "=/file remove \"{{$node[\"Set\"].json[\"filenameonmikrotik\"]}}\"",
-          "cwd": "={{}}"
-        },
-        "name": "SSH5",
-        "type": "n8n-nodes-base.ssh",
-        "typeVersion": 1,
-        "position": [
-          2240,
-          40
-        ],
-        "notesInFlow": true,
-        "credentials": {
-          "sshPassword": {
-            "id": "2",
-            "name": "SSH Password account"
-          }
-        },
-        "continueOnFail": true,
-        "notes": "Delete binary backup"
-      },
-      {
-        "parameters": {
           "mode": "mergeByIndex",
           "join": "outer"
         },
@@ -541,8 +388,8 @@
         "type": "n8n-nodes-base.merge",
         "typeVersion": 1,
         "position": [
-          3520,
-          260
+          3000,
+          240
         ]
       },
       {
@@ -561,8 +408,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          2440,
-          380
+          1920,
+          360
         ]
       },
       {
@@ -576,8 +423,8 @@
         "type": "n8n-nodes-base.git",
         "typeVersion": 1,
         "position": [
-          3020,
-          380
+          2500,
+          360
         ],
         "credentials": {
           "gitPassword": {
@@ -614,8 +461,8 @@
         "name": "IF3",
         "type": "n8n-nodes-base.if",
         "position": [
-          4280,
-          220
+          3760,
+          200
         ],
         "typeVersion": 1
       },
@@ -630,8 +477,8 @@
         "type": "n8n-nodes-base.git",
         "typeVersion": 1,
         "position": [
-          2820,
-          380
+          2300,
+          360
         ]
       },
       {
@@ -644,22 +491,9 @@
         "type": "n8n-nodes-base.git",
         "typeVersion": 1,
         "position": [
-          2620,
-          380
+          2100,
+          360
         ]
-      },
-      {
-        "parameters": {
-          "command": "=sed -i 's/^#.*by/#/' {{$node[\"Set1\"].json[\"folderforrsc\"]}}{{$node[\"Set1\"].json[\"filenamersc\"]}}"
-        },
-        "name": "Execute Command",
-        "type": "n8n-nodes-base.executeCommand",
-        "typeVersion": 1,
-        "position": [
-          2240,
-          380
-        ],
-        "continueOnFail": true
       },
       {
         "parameters": {
@@ -699,7 +533,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          2440,
+          2700,
           40
         ]
       },
@@ -722,8 +556,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          3220,
-          380
+          2700,
+          360
         ]
       },
       {
@@ -766,7 +600,8 @@
                 "name": "filenamersc",
                 "value": "={{$node[\"SplitInBatches\"].json[\"id\"]}}_{{$node[\"SplitInBatches\"].json[\"name\"]}}.rsc"
               }
-            ]
+            ],
+            "number": []
           },
           "options": {}
         },
@@ -776,118 +611,6 @@
         "position": [
           1240,
           380
-        ]
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "string": [],
-            "number": [
-              {
-                "value1": "={{$node[\"SSH\"].json[\"code\"]}}",
-                "operation": "notEqual"
-              }
-            ]
-          }
-        },
-        "name": "IF6",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 1,
-        "position": [
-          1740,
-          -120
-        ]
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "string": [],
-            "number": [
-              {
-                "value1": "={{$node[\"SSH1\"].json[\"code\"]}}",
-                "operation": "notEqual"
-              }
-            ]
-          }
-        },
-        "name": "IF7",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 1,
-        "position": [
-          1940,
-          -200
-        ]
-      },
-      {
-        "parameters": {
-          "fileName": "={{$node[\"Set\"].json[\"folderforbin\"]}}{{$node[\"Set\"].json[\"filenamebin\"]}}"
-        },
-        "name": "Write Binary File",
-        "type": "n8n-nodes-base.writeBinaryFile",
-        "typeVersion": 1,
-        "position": [
-          2040,
-          40
-        ]
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "string": [],
-            "number": [
-              {
-                "value1": "={{$node[\"SSH2\"].json[\"code\"]}}",
-                "operation": "notEqual"
-              }
-            ]
-          }
-        },
-        "name": "IF8",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 1,
-        "position": [
-          1540,
-          580
-        ]
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "string": [],
-            "number": [
-              {
-                "value1": "={{$node[\"SSH3\"].json[\"code\"]}}",
-                "operation": "notEqual"
-              }
-            ]
-          }
-        },
-        "name": "IF9",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 1,
-        "position": [
-          1740,
-          620
-        ]
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "string": [],
-            "number": [
-              {
-                "value1": "={{$node[\"SSH4\"].json[\"code\"]}}",
-                "operation": "notEqual"
-              }
-            ]
-          }
-        },
-        "name": "IF10",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 1,
-        "position": [
-          2140,
-          640
         ]
       },
       {
@@ -917,8 +640,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 1,
         "position": [
-          3920,
-          20
+          3400,
+          0
         ]
       },
       {
@@ -931,8 +654,8 @@
         "type": "n8n-nodes-base.mySql",
         "typeVersion": 1,
         "position": [
-          4080,
-          20
+          3560,
+          0
         ],
         "credentials": {
           "mySql": {
@@ -968,8 +691,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 1,
         "position": [
-          3920,
-          220
+          3400,
+          200
         ]
       },
       {
@@ -982,8 +705,8 @@
         "type": "n8n-nodes-base.mySql",
         "typeVersion": 1,
         "position": [
-          4080,
-          220
+          3560,
+          200
         ],
         "credentials": {
           "mySql": {
@@ -1012,88 +735,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          3720,
-          100
-        ]
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "string": [],
-            "number": [
-              {
-                "value1": "={{$node[\"SSH5\"].json[\"code\"]}}",
-                "operation": "notEqual"
-              }
-            ]
-          }
-        },
-        "name": "IF13",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 1,
-        "position": [
-          2340,
-          -120
-        ]
-      },
-      {
-        "parameters": {
-          "values": {
-            "string": [
-              {
-                "name": "laststatusbin",
-                "value": "BAD"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "name": "Set4",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 1,
-        "position": [
-          2540,
-          -220
-        ]
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "string": [],
-            "number": [
-              {
-                "value1": "={{$json[\"exitCode\"]}}",
-                "operation": "notEqual"
-              }
-            ]
-          }
-        },
-        "name": "IF12",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 1,
-        "position": [
-          2340,
-          560
-        ]
-      },
-      {
-        "parameters": {
-          "values": {
-            "string": [
-              {
-                "name": "laststatusrsc",
-                "value": "BAD"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "name": "Set5",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 1,
-        "position": [
-          2760,
-          700
+          3200,
+          80
         ]
       },
       {
@@ -1157,8 +800,8 @@
         "type": "n8n-nodes-base.dateTime",
         "typeVersion": 1,
         "position": [
-          3560,
-          100
+          3040,
+          80
         ]
       },
       {
@@ -1181,8 +824,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          4480,
-          220
+          3960,
+          200
         ]
       },
       {
@@ -1194,8 +837,8 @@
         "type": "n8n-nodes-base.mySql",
         "typeVersion": 1,
         "position": [
-          4660,
-          220
+          4140,
+          200
         ],
         "notesInFlow": true,
         "credentials": {
@@ -1216,8 +859,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1,
         "position": [
-          5060,
-          100
+          4540,
+          80
         ],
         "credentials": {
           "telegramApi": {
@@ -1241,8 +884,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          4860,
-          100
+          4340,
+          80
         ]
       },
       {
@@ -1260,8 +903,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          4860,
-          340
+          4340,
+          320
         ]
       },
       {
@@ -1276,8 +919,8 @@
         "type": "n8n-nodes-base.emailSend",
         "typeVersion": 1,
         "position": [
-          5060,
-          340
+          4540,
+          320
         ],
         "credentials": {
           "smtp": {
@@ -1301,6 +944,49 @@
           1240,
           40
         ]
+      },
+      {
+        "parameters": {
+          "workflowId": "7"
+        },
+        "name": "Execute Workflow",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1,
+        "position": [
+          1460,
+          380
+        ]
+      },
+      {
+        "parameters": {
+          "workflowId": "8"
+        },
+        "name": "Execute Workflow1",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1,
+        "position": [
+          1640,
+          40
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $node[\"Execute Workflow\"].json[\"laststatusrsc\"] }}",
+                "value2": "OK"
+              }
+            ]
+          }
+        },
+        "name": "IF17",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          1660,
+          480
+        ]
       }
     ],
     "connections": {
@@ -1320,28 +1006,6 @@
           [
             {
               "node": "SplitInBatches",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "SSH": {
-        "main": [
-          [
-            {
-              "node": "IF6",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "SSH1": {
-        "main": [
-          [
-            {
-              "node": "IF7",
               "type": "main",
               "index": 0
             }
@@ -1378,61 +1042,6 @@
           [
             {
               "node": "DontExportBackupCreate",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "SSH2": {
-        "main": [
-          [
-            {
-              "node": "IF8",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "SSH3": {
-        "main": [
-          [
-            {
-              "node": "IF9",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Write Binary File1": {
-        "main": [
-          [
-            {
-              "node": "SSH4",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "SSH4": {
-        "main": [
-          [
-            {
-              "node": "IF10",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "SSH5": {
-        "main": [
-          [
-            {
-              "node": "IF13",
               "type": "main",
               "index": 0
             }
@@ -1535,17 +1144,6 @@
           ]
         ]
       },
-      "Execute Command": {
-        "main": [
-          [
-            {
-              "node": "IF12",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Cron": {
         "main": [
           [
@@ -1597,7 +1195,7 @@
         "main": [
           [
             {
-              "node": "SSH",
+              "node": "Execute Workflow1",
               "type": "main",
               "index": 0
             }
@@ -1608,108 +1206,7 @@
         "main": [
           [
             {
-              "node": "SSH2",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IF6": {
-        "main": [
-          [
-            {
-              "node": "Set4",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "SSH1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Write Binary File": {
-        "main": [
-          [
-            {
-              "node": "SSH5",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IF7": {
-        "main": [
-          [
-            {
-              "node": "Set4",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "Write Binary File",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IF8": {
-        "main": [
-          [
-            {
-              "node": "Set5",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "SSH3",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IF9": {
-        "main": [
-          [
-            {
-              "node": "Set5",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "Write Binary File1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IF10": {
-        "main": [
-          [
-            {
-              "node": "Set5",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "Execute Command",
+              "node": "Execute Workflow",
               "type": "main",
               "index": 0
             }
@@ -1754,64 +1251,6 @@
           [
             {
               "node": "IF3",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IF13": {
-        "main": [
-          [
-            {
-              "node": "Set4",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "IF4",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Set4": {
-        "main": [
-          [
-            {
-              "node": "IF4",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IF12": {
-        "main": [
-          [
-            {
-              "node": "Set5",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "IF2",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Set5": {
-        "main": [
-          [
-            {
-              "node": "IF5",
               "type": "main",
               "index": 0
             }
@@ -1939,10 +1378,50 @@
             }
           ]
         ]
+      },
+      "Execute Workflow": {
+        "main": [
+          [
+            {
+              "node": "IF17",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF17": {
+        "main": [
+          [
+            {
+              "node": "IF2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "IF5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Execute Workflow1": {
+        "main": [
+          [
+            {
+              "node": "IF4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "createdAt": "2021-11-15T19:15:31.061Z",
-    "updatedAt": "2021-12-17T18:26:38.117Z",
+    "updatedAt": "2021-12-18T16:12:04.666Z",
     "settings": {
       "errorWorkflow": "3"
     },
@@ -2690,7 +2169,7 @@
         "type": "n8n-nodes-base.start",
         "typeVersion": 1,
         "position": [
-          240,
+          60,
           300
         ]
       },
@@ -2704,7 +2183,7 @@
         "type": "n8n-nodes-base.webhook",
         "typeVersion": 1,
         "position": [
-          240,
+          60,
           460
         ],
         "webhookId": "17577a90-4e1d-4d14-9cd5-be38e35cf2e1"
@@ -2721,8 +2200,8 @@
         "type": "n8n-nodes-base.respondToWebhook",
         "typeVersion": 1,
         "position": [
-          1160,
-          300
+          1220,
+          360
         ]
       },
       {
@@ -2734,7 +2213,7 @@
         "type": "n8n-nodes-base.mySql",
         "typeVersion": 1,
         "position": [
-          540,
+          360,
           380
         ],
         "notesInFlow": true,
@@ -2754,8 +2233,8 @@
         "type": "n8n-nodes-base.executeCommand",
         "typeVersion": 1,
         "position": [
-          740,
-          380
+          760,
+          480
         ]
       },
       {
@@ -2773,8 +2252,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 1,
         "position": [
-          940,
-          380
+          1000,
+          480
         ]
       },
       {
@@ -2789,8 +2268,88 @@
         "type": "n8n-nodes-base.respondToWebhook",
         "typeVersion": 1,
         "position": [
-          1160,
-          440
+          1220,
+          520
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"MySQL\"].json[\"sshuse\"]}}",
+                "operation": "equal",
+                "value2": 1
+              }
+            ]
+          }
+        },
+        "name": "IF1",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          540,
+          380
+        ]
+      },
+      {
+        "parameters": {
+          "authentication": "privateKey",
+          "command": ":put [/system identity get name]",
+          "cwd": "={{}}"
+        },
+        "name": "SSH2",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          760,
+          240
+        ],
+        "notesInFlow": true,
+        "alwaysOutputData": true,
+        "credentials": {
+          "sshPrivateKey": {
+            "id": "7",
+            "name": "SSH Private Key account Test"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Create binary backup"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $node[\"SSH2\"].json[\"stdout\"] }}",
+                "operation": "isEmpty"
+              }
+            ]
+          }
+        },
+        "name": "IF2",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          1000,
+          240
+        ]
+      },
+      {
+        "parameters": {
+          "respondWith": "text",
+          "responseBody": "=<div class=\"alert alert-danger\">Подключение не удалось</div>",
+          "options": {
+            "responseCode": 200
+          }
+        },
+        "name": "Respond to Webhook2",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1,
+        "position": [
+          1220,
+          200
         ]
       }
     ],
@@ -2821,7 +2380,7 @@
         "main": [
           [
             {
-              "node": "Execute Command",
+              "node": "IF1",
               "type": "main",
               "index": 0
             }
@@ -2856,11 +2415,1356 @@
             }
           ]
         ]
+      },
+      "IF1": {
+        "main": [
+          [
+            {
+              "node": "SSH2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Execute Command",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH2": {
+        "main": [
+          [
+            {
+              "node": "IF2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF2": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Respond to Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "createdAt": "2021-12-14T09:28:03.807Z",
-    "updatedAt": "2021-12-14T11:07:07.991Z",
+    "updatedAt": "2021-12-18T17:21:14.246Z",
     "settings": {},
+    "staticData": null
+  },
+  {
+    "id": 7,
+    "name": "Export Backup",
+    "active": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "name": "Start",
+        "type": "n8n-nodes-base.start",
+        "typeVersion": 1,
+        "position": [
+          -240,
+          260
+        ]
+      },
+      {
+        "parameters": {
+          "command": "=/export{{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? \" hide-sensitive\" : \"\" }} file={{$node[\"Start\"].json[\"filenamersc\"]}}",
+          "cwd": "={{}}"
+        },
+        "name": "SSH2",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          140,
+          360
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "sshPassword": {
+            "id": "2",
+            "name": "SSH Password account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Create export backup"
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "operation": "download",
+          "path": "={{$node[\"Start\"].json[\"filenamersc\"]}}"
+        },
+        "name": "SSH3",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          340,
+          360
+        ],
+        "notesInFlow": true,
+        "retryOnFail": true,
+        "maxTries": 2,
+        "waitBetweenTries": 3000,
+        "credentials": {
+          "sshPassword": {
+            "id": "2",
+            "name": "SSH Password account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Download binary backup"
+      },
+      {
+        "parameters": {
+          "fileName": "={{$node[\"Start\"].json[\"folderforrsc\"]}}{{$node[\"Start\"].json[\"filenamersc\"]}}"
+        },
+        "name": "Write Binary File1",
+        "type": "n8n-nodes-base.writeBinaryFile",
+        "typeVersion": 1,
+        "position": [
+          540,
+          360
+        ]
+      },
+      {
+        "parameters": {
+          "command": "=/file remove \"{{$node[\"Start\"].json[\"filenamersc\"]}}\"",
+          "cwd": "={{}}"
+        },
+        "name": "SSH4",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          740,
+          360
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "sshPassword": {
+            "id": "2",
+            "name": "SSH Password account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Delete binary backup"
+      },
+      {
+        "parameters": {
+          "command": "=sed -i 's/^#.*by/#/' {{$node[\"Start\"].json[\"folderforrsc\"]}}{{$node[\"Start\"].json[\"filenamersc\"]}}"
+        },
+        "name": "Execute Command",
+        "type": "n8n-nodes-base.executeCommand",
+        "typeVersion": 1,
+        "position": [
+          940,
+          360
+        ],
+        "continueOnFail": true
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH2\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF8",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          240,
+          560
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH3\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF9",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          440,
+          600
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH4\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF10",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          840,
+          620
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$json[\"exitCode\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF12",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          1040,
+          540
+        ]
+      },
+      {
+        "parameters": {
+          "keepOnlySet": true,
+          "values": {
+            "string": [
+              {
+                "name": "laststatusrsc",
+                "value": "BAD"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Set5",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 1,
+        "position": [
+          1360,
+          280
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"Start\"].json[\"sshuse\"]}}",
+                "operation": "equal",
+                "value2": 1
+              }
+            ]
+          }
+        },
+        "name": "IF",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          -60,
+          260
+        ]
+      },
+      {
+        "parameters": {
+          "authentication": "privateKey",
+          "command": "=/export{{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? \" hide-sensitive\" : \"\" }} file={{$node[\"Start\"].json[\"filenamersc\"]}}",
+          "cwd": "={{}}"
+        },
+        "name": "SSH",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          100,
+          -180
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "sshPrivateKey": {
+            "id": "6",
+            "name": "SSH Private Key account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Create export backup"
+      },
+      {
+        "parameters": {
+          "authentication": "privateKey",
+          "resource": "file",
+          "operation": "download",
+          "path": "={{$node[\"Start\"].json[\"filenamersc\"]}}"
+        },
+        "name": "SSH5",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          300,
+          -180
+        ],
+        "notesInFlow": true,
+        "retryOnFail": true,
+        "maxTries": 2,
+        "waitBetweenTries": 3000,
+        "credentials": {
+          "sshPrivateKey": {
+            "id": "6",
+            "name": "SSH Private Key account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Download binary backup"
+      },
+      {
+        "parameters": {
+          "fileName": "={{$node[\"Start\"].json[\"folderforrsc\"]}}{{$node[\"Start\"].json[\"filenamersc\"]}}"
+        },
+        "name": "Write Binary File",
+        "type": "n8n-nodes-base.writeBinaryFile",
+        "typeVersion": 1,
+        "position": [
+          500,
+          -180
+        ]
+      },
+      {
+        "parameters": {
+          "authentication": "privateKey",
+          "command": "=/file remove \"{{$node[\"Start\"].json[\"filenamersc\"]}}\"",
+          "cwd": "={{}}"
+        },
+        "name": "SSH6",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          700,
+          -180
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "sshPrivateKey": {
+            "id": "6",
+            "name": "SSH Private Key account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Delete binary backup"
+      },
+      {
+        "parameters": {
+          "command": "=sed -i 's/^#.*by/#/' {{$node[\"Start\"].json[\"folderforrsc\"]}}{{$node[\"Start\"].json[\"filenamersc\"]}}"
+        },
+        "name": "Execute Command1",
+        "type": "n8n-nodes-base.executeCommand",
+        "typeVersion": 1,
+        "position": [
+          900,
+          -180
+        ],
+        "continueOnFail": true
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF11",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          200,
+          20
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH5\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF13",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          400,
+          60
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH6\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF14",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          800,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$json[\"exitCode\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF15",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          1000,
+          0
+        ]
+      },
+      {
+        "parameters": {
+          "keepOnlySet": true,
+          "values": {
+            "string": [
+              {
+                "name": "laststatusrsc",
+                "value": "OK"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Set",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 1,
+        "position": [
+          1360,
+          60
+        ]
+      }
+    ],
+    "connections": {
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "IF",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH2": {
+        "main": [
+          [
+            {
+              "node": "IF8",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH3": {
+        "main": [
+          [
+            {
+              "node": "IF9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Write Binary File1": {
+        "main": [
+          [
+            {
+              "node": "SSH4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH4": {
+        "main": [
+          [
+            {
+              "node": "IF10",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Execute Command": {
+        "main": [
+          [
+            {
+              "node": "IF12",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF8": {
+        "main": [
+          [
+            {
+              "node": "Set5",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SSH3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF9": {
+        "main": [
+          [
+            {
+              "node": "Set5",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Write Binary File1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF10": {
+        "main": [
+          [
+            {
+              "node": "Set5",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Execute Command",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF12": {
+        "main": [
+          [
+            {
+              "node": "Set5",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF": {
+        "main": [
+          [
+            {
+              "node": "SSH",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SSH2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH": {
+        "main": [
+          [
+            {
+              "node": "IF11",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH5": {
+        "main": [
+          [
+            {
+              "node": "IF13",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Write Binary File": {
+        "main": [
+          [
+            {
+              "node": "SSH6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH6": {
+        "main": [
+          [
+            {
+              "node": "IF14",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Execute Command1": {
+        "main": [
+          [
+            {
+              "node": "IF15",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF11": {
+        "main": [
+          [],
+          [
+            {
+              "node": "SSH5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF13": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Write Binary File",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF14": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Execute Command1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF15": {
+        "main": [
+          [
+            {
+              "node": "Set5",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2021-12-18T14:59:02.109Z",
+    "updatedAt": "2021-12-18T15:44:47.649Z",
+    "settings": {
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "staticData": null
+  },
+  {
+    "id": 8,
+    "name": "Binary Backup",
+    "active": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "name": "Start",
+        "type": "n8n-nodes-base.start",
+        "typeVersion": 1,
+        "position": [
+          220,
+          320
+        ]
+      },
+      {
+        "parameters": {
+          "command": "=/system backup save{{ $env.MK_BACKUP_ENCRYPT_PASSWORD ? \" dont-encrypt=no encryption=aes-sha256\" : \" dont-encrypt=yes\"}} name={{$node[\"Start\"].json[\"filenameonmikrotik\"]}}{{ $env.MK_BACKUP_ENCRYPT_PASSWORD ? \" password=\" +  $env.MK_BACKUP_ENCRYPT_PASSWORD : \"\"}}",
+          "cwd": "={{}}"
+        },
+        "name": "SSH",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          600,
+          640
+        ],
+        "notesInFlow": true,
+        "alwaysOutputData": true,
+        "credentials": {
+          "sshPassword": {
+            "id": "2",
+            "name": "SSH Password account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Create binary backup"
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "operation": "download",
+          "path": "={{$node[\"Start\"].json[\"filenameonmikrotik\"]}}"
+        },
+        "name": "SSH1",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          800,
+          640
+        ],
+        "notesInFlow": true,
+        "retryOnFail": true,
+        "maxTries": 2,
+        "waitBetweenTries": 3000,
+        "credentials": {
+          "sshPassword": {
+            "id": "2",
+            "name": "SSH Password account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Download binary backup"
+      },
+      {
+        "parameters": {
+          "command": "=/file remove \"{{$node[\"Start\"].json[\"filenameonmikrotik\"]}}\"",
+          "cwd": "={{}}"
+        },
+        "name": "SSH5",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          1200,
+          640
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "sshPassword": {
+            "id": "2",
+            "name": "SSH Password account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Delete binary backup"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF6",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          700,
+          480
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH1\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF7",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          900,
+          400
+        ]
+      },
+      {
+        "parameters": {
+          "fileName": "={{$node[\"Start\"].json[\"folderforbin\"]}}{{$node[\"Start\"].json[\"filenamebin\"]}}"
+        },
+        "name": "Write Binary File",
+        "type": "n8n-nodes-base.writeBinaryFile",
+        "typeVersion": 1,
+        "position": [
+          1000,
+          640
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH5\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF13",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          1300,
+          480
+        ]
+      },
+      {
+        "parameters": {
+          "keepOnlySet": true,
+          "values": {
+            "string": [
+              {
+                "name": "laststatusbin",
+                "value": "BAD"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Set4",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 1,
+        "position": [
+          1560,
+          420
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"Start\"].json[\"sshuse\"]}}",
+                "operation": "equal",
+                "value2": 1
+              }
+            ]
+          }
+        },
+        "name": "IF",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          400,
+          320
+        ]
+      },
+      {
+        "parameters": {
+          "authentication": "privateKey",
+          "command": "=/system backup save{{ $env.MK_BACKUP_ENCRYPT_PASSWORD ? \" dont-encrypt=no encryption=aes-sha256\" : \" dont-encrypt=yes\"}} name={{$node[\"Start\"].json[\"filenameonmikrotik\"]}}{{ $env.MK_BACKUP_ENCRYPT_PASSWORD ? \" password=\" +  $env.MK_BACKUP_ENCRYPT_PASSWORD : \"\"}}",
+          "cwd": "={{}}"
+        },
+        "name": "SSH2",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          620,
+          80
+        ],
+        "notesInFlow": true,
+        "alwaysOutputData": true,
+        "credentials": {
+          "sshPrivateKey": {
+            "id": "6",
+            "name": "SSH Private Key account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Create binary backup"
+      },
+      {
+        "parameters": {
+          "authentication": "privateKey",
+          "resource": "file",
+          "operation": "download",
+          "path": "={{$node[\"Start\"].json[\"filenameonmikrotik\"]}}"
+        },
+        "name": "SSH3",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          820,
+          80
+        ],
+        "notesInFlow": true,
+        "retryOnFail": true,
+        "maxTries": 2,
+        "waitBetweenTries": 3000,
+        "credentials": {
+          "sshPrivateKey": {
+            "id": "6",
+            "name": "SSH Private Key account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Download binary backup"
+      },
+      {
+        "parameters": {
+          "authentication": "privateKey",
+          "command": "=/file remove \"{{$node[\"Start\"].json[\"filenameonmikrotik\"]}}\"",
+          "cwd": "={{}}"
+        },
+        "name": "SSH6",
+        "type": "n8n-nodes-base.ssh",
+        "typeVersion": 1,
+        "position": [
+          1220,
+          80
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "sshPrivateKey": {
+            "id": "6",
+            "name": "SSH Private Key account"
+          }
+        },
+        "continueOnFail": true,
+        "notes": "Delete binary backup"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH2\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF8",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          720,
+          -80
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH3\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF9",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          940,
+          -180
+        ]
+      },
+      {
+        "parameters": {
+          "fileName": "={{$node[\"Start\"].json[\"folderforbin\"]}}{{$node[\"Start\"].json[\"filenamebin\"]}}"
+        },
+        "name": "Write Binary File1",
+        "type": "n8n-nodes-base.writeBinaryFile",
+        "typeVersion": 1,
+        "position": [
+          1020,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [],
+            "number": [
+              {
+                "value1": "={{$node[\"SSH6\"].json[\"code\"]}}",
+                "operation": "notEqual"
+              }
+            ]
+          }
+        },
+        "name": "IF14",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          1320,
+          -80
+        ]
+      },
+      {
+        "parameters": {
+          "keepOnlySet": true,
+          "values": {
+            "string": [
+              {
+                "name": "laststatusbin",
+                "value": "OK"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Set",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 1,
+        "position": [
+          1560,
+          120
+        ]
+      }
+    ],
+    "connections": {
+      "SSH": {
+        "main": [
+          [
+            {
+              "node": "IF6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH1": {
+        "main": [
+          [
+            {
+              "node": "IF7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH5": {
+        "main": [
+          [
+            {
+              "node": "IF13",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF6": {
+        "main": [
+          [
+            {
+              "node": "Set4",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SSH1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF7": {
+        "main": [
+          [
+            {
+              "node": "Set4",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Write Binary File",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Write Binary File": {
+        "main": [
+          [
+            {
+              "node": "SSH5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF13": {
+        "main": [
+          [
+            {
+              "node": "Set4",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "IF",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF": {
+        "main": [
+          [
+            {
+              "node": "SSH2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SSH",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH2": {
+        "main": [
+          [
+            {
+              "node": "IF8",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH3": {
+        "main": [
+          [
+            {
+              "node": "IF9",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SSH6": {
+        "main": [
+          [
+            {
+              "node": "IF14",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF8": {
+        "main": [
+          [],
+          [
+            {
+              "node": "SSH3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF9": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Write Binary File1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Write Binary File1": {
+        "main": [
+          [
+            {
+              "node": "SSH6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF14": {
+        "main": [
+          [
+            {
+              "node": "Set4",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2021-12-18T15:22:00.567Z",
+    "updatedAt": "2021-12-18T15:56:52.074Z",
+    "settings": {
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
     "staticData": null
   }
 ]

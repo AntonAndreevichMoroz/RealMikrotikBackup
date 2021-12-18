@@ -20,7 +20,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'sshuse')->dropDownList(array('0' => 'Нет', '1' => 'Да')) ?>
+
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'sshkey')->textarea(['rows' => 4]) ?>
 
     <?= $form->field($model, 'active')->dropDownList(array('1' => 'Да', '0' => 'Нет')) ?>
 
