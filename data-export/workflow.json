@@ -292,7 +292,7 @@
         "type": "n8n-nodes-base.start",
         "typeVersion": 1,
         "position": [
-          340,
+          120,
           300
         ]
       },
@@ -305,7 +305,7 @@
         "type": "n8n-nodes-base.mySql",
         "typeVersion": 1,
         "position": [
-          540,
+          320,
           300
         ],
         "notesInFlow": true,
@@ -442,7 +442,7 @@
         "type": "n8n-nodes-base.splitInBatches",
         "typeVersion": 1,
         "position": [
-          740,
+          520,
           300
         ]
       },
@@ -510,7 +510,7 @@
         "type": "n8n-nodes-base.cron",
         "typeVersion": 1,
         "position": [
-          340,
+          120,
           100
         ]
       },
@@ -562,6 +562,7 @@
       },
       {
         "parameters": {
+          "keepOnlySet": true,
           "values": {
             "string": [
               {
@@ -575,6 +576,30 @@
               {
                 "name": "folderforbin",
                 "value": "/home/node/backup/bin/"
+              },
+              {
+                "name": "username",
+                "value": "={{$node[\"SplitInBatches\"].json[\"username\"]}}"
+              },
+              {
+                "name": "ip_address",
+                "value": "={{$node[\"SplitInBatches\"].json[\"ip_address\"]}}"
+              },
+              {
+                "name": "sshport",
+                "value": "={{$node[\"SplitInBatches\"].json[\"sshport\"]}}"
+              },
+              {
+                "name": "sshuse",
+                "value": "={{$node[\"SplitInBatches\"].json[\"sshuse\"]}}"
+              },
+              {
+                "name": "sshkey",
+                "value": "={{$node[\"SplitInBatches\"].json[\"sshkey\"]}}"
+              },
+              {
+                "name": "password",
+                "value": "={{ $env.DATA_ENCRYPT_PASSWORD ? $node[\"HTTP Request\"].json[\"password\"] : $node[\"SplitInBatches\"].json[\"password\"] }}"
               }
             ]
           },
@@ -590,6 +615,7 @@
       },
       {
         "parameters": {
+          "keepOnlySet": true,
           "values": {
             "string": [
               {
@@ -599,6 +625,30 @@
               {
                 "name": "filenamersc",
                 "value": "={{$node[\"SplitInBatches\"].json[\"id\"]}}_{{$node[\"SplitInBatches\"].json[\"name\"]}}.rsc"
+              },
+              {
+                "name": "username",
+                "value": "={{$node[\"SplitInBatches\"].json[\"username\"]}}"
+              },
+              {
+                "name": "ip_address",
+                "value": "={{$node[\"SplitInBatches\"].json[\"ip_address\"]}}"
+              },
+              {
+                "name": "sshport",
+                "value": "={{$node[\"SplitInBatches\"].json[\"sshport\"]}}"
+              },
+              {
+                "name": "sshuse",
+                "value": "={{$node[\"SplitInBatches\"].json[\"sshuse\"]}}"
+              },
+              {
+                "name": "sshkey",
+                "value": "={{$node[\"SplitInBatches\"].json[\"sshkey\"]}}"
+              },
+              {
+                "name": "password",
+                "value": "={{ $env.DATA_ENCRYPT_PASSWORD ? $node[\"HTTP Request\"].json[\"password\"] : $node[\"SplitInBatches\"].json[\"password\"] }}"
               }
             ],
             "number": []
@@ -641,7 +691,7 @@
         "typeVersion": 1,
         "position": [
           3400,
-          0
+          260
         ]
       },
       {
@@ -655,7 +705,7 @@
         "typeVersion": 1,
         "position": [
           3560,
-          0
+          260
         ],
         "credentials": {
           "mySql": {
@@ -692,7 +742,7 @@
         "typeVersion": 1,
         "position": [
           3400,
-          200
+          20
         ]
       },
       {
@@ -706,7 +756,7 @@
         "typeVersion": 1,
         "position": [
           3560,
-          200
+          20
         ],
         "credentials": {
           "mySql": {
@@ -721,11 +771,11 @@
             "string": [
               {
                 "value1": "={{$json[\"laststatusrsc\"]}}",
-                "value2": "BAD"
+                "value2": "OK"
               },
               {
                 "value1": "={{$json[\"laststatusbin\"]}}",
-                "value2": "BAD"
+                "value2": "OK"
               }
             ]
           },
@@ -748,7 +798,7 @@
         "type": "n8n-nodes-base.webhook",
         "typeVersion": 1,
         "position": [
-          340,
+          120,
           520
         ],
         "webhookId": "33deb629-14e4-4a24-b245-50dfd6fe7cb5"
@@ -762,7 +812,7 @@
         "type": "n8n-nodes-base.webhook",
         "typeVersion": 1,
         "position": [
-          340,
+          120,
           -60
         ],
         "webhookId": "c4790d77-a07e-4507-8b58-c3fd4a0f8623"
@@ -776,7 +826,7 @@
         "type": "n8n-nodes-base.mySql",
         "typeVersion": 1,
         "position": [
-          540,
+          320,
           80
         ],
         "notesInFlow": true,
@@ -955,7 +1005,8 @@
         "position": [
           1460,
           380
-        ]
+        ],
+        "continueOnFail": true
       },
       {
         "parameters": {
@@ -967,7 +1018,8 @@
         "position": [
           1640,
           40
-        ]
+        ],
+        "continueOnFail": true
       },
       {
         "parameters": {
@@ -986,6 +1038,52 @@
         "position": [
           1660,
           480
+        ]
+      },
+      {
+        "parameters": {
+          "url": "http://web/device/passdecrypt",
+          "responseFormat": "string",
+          "dataPropertyName": "password",
+          "options": {},
+          "queryParametersUi": {
+            "parameter": [
+              {
+                "name": "encryptpass",
+                "value": "={{ $node[\"SplitInBatches\"].json[\"password\"] }}"
+              },
+              {
+                "name": "secretkey",
+                "value": "={{ $env.DATA_ENCRYPT_PASSWORD }}"
+              }
+            ]
+          }
+        },
+        "name": "HTTP Request",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 1,
+        "position": [
+          860,
+          300
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $env.DATA_ENCRYPT_PASSWORD }}",
+                "operation": "isEmpty"
+              }
+            ]
+          }
+        },
+        "name": "IF6",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          700,
+          300
         ]
       }
     ],
@@ -1081,12 +1179,7 @@
         "main": [
           [
             {
-              "node": "IF",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "IF1",
+              "node": "IF6",
               "type": "main",
               "index": 0
             }
@@ -1261,14 +1354,14 @@
         "main": [
           [
             {
-              "node": "Set2",
+              "node": "Set3",
               "type": "main",
               "index": 0
             }
           ],
           [
             {
-              "node": "Set3",
+              "node": "Set2",
               "type": "main",
               "index": 0
             }
@@ -1418,10 +1511,49 @@
             }
           ]
         ]
+      },
+      "IF6": {
+        "main": [
+          [
+            {
+              "node": "IF",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "IF1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          [
+            {
+              "node": "IF",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "IF1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "createdAt": "2021-11-15T19:15:31.061Z",
-    "updatedAt": "2021-12-18T16:12:04.666Z",
+    "updatedAt": "2021-12-19T13:15:53.318Z",
     "settings": {
       "errorWorkflow": "3"
     },
@@ -2169,7 +2301,7 @@
         "type": "n8n-nodes-base.start",
         "typeVersion": 1,
         "position": [
-          60,
+          -340,
           300
         ]
       },
@@ -2183,7 +2315,7 @@
         "type": "n8n-nodes-base.webhook",
         "typeVersion": 1,
         "position": [
-          60,
+          -340,
           460
         ],
         "webhookId": "17577a90-4e1d-4d14-9cd5-be38e35cf2e1"
@@ -2213,7 +2345,7 @@
         "type": "n8n-nodes-base.mySql",
         "typeVersion": 1,
         "position": [
-          360,
+          -40,
           380
         ],
         "notesInFlow": true,
@@ -2227,7 +2359,7 @@
       },
       {
         "parameters": {
-          "command": "=sshpass -p {{ $node[\"MySQL\"].json[\"password\"] }}  ssh -o StrictHostKeyChecking=no {{ $node[\"MySQL\"].json[\"username\"] }}@{{ $node[\"MySQL\"].json[\"ip_address\"] }} -p {{ $node[\"MySQL\"].json[\"sshport\"] }} ':put [/system identity get name]' > /dev/null 2>&1; echo $?"
+          "command": "=sshpass -p {{ $env.DATA_ENCRYPT_PASSWORD ? $node[\"HTTP Request\"].json[\"password\"] : $node[\"MySQL\"].json[\"password\"] }}  ssh -o StrictHostKeyChecking=no {{ $node[\"MySQL\"].json[\"username\"] }}@{{ $node[\"MySQL\"].json[\"ip_address\"] }} -p {{ $node[\"MySQL\"].json[\"sshport\"] }} ':put [/system identity get name]' > /dev/null 2>&1; echo $?"
         },
         "name": "Execute Command",
         "type": "n8n-nodes-base.executeCommand",
@@ -2351,6 +2483,52 @@
           1220,
           200
         ]
+      },
+      {
+        "parameters": {
+          "url": "http://web/device/passdecrypt",
+          "responseFormat": "string",
+          "dataPropertyName": "password",
+          "options": {},
+          "queryParametersUi": {
+            "parameter": [
+              {
+                "name": "encryptpass",
+                "value": "={{ $node[\"MySQL\"].json[\"password\"] }}"
+              },
+              {
+                "name": "secretkey",
+                "value": "={{ $env.DATA_ENCRYPT_PASSWORD }}"
+              }
+            ]
+          }
+        },
+        "name": "HTTP Request",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 1,
+        "position": [
+          360,
+          380
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $env.DATA_ENCRYPT_PASSWORD }}",
+                "operation": "isEmpty"
+              }
+            ]
+          }
+        },
+        "name": "IF6",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          160,
+          380
+        ]
       }
     ],
     "connections": {
@@ -2380,7 +2558,7 @@
         "main": [
           [
             {
-              "node": "IF1",
+              "node": "IF6",
               "type": "main",
               "index": 0
             }
@@ -2462,10 +2640,39 @@
             }
           ]
         ]
+      },
+      "HTTP Request": {
+        "main": [
+          [
+            {
+              "node": "IF1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF6": {
+        "main": [
+          [
+            {
+              "node": "IF1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "createdAt": "2021-12-14T09:28:03.807Z",
-    "updatedAt": "2021-12-18T17:21:14.246Z",
+    "updatedAt": "2021-12-19T12:38:05.388Z",
     "settings": {},
     "staticData": null
   },
@@ -3169,10 +3376,11 @@
       }
     },
     "createdAt": "2021-12-18T14:59:02.109Z",
-    "updatedAt": "2021-12-18T15:44:47.649Z",
+    "updatedAt": "2021-12-19T12:59:58.739Z",
     "settings": {
       "saveExecutionProgress": true,
-      "saveManualExecutions": true
+      "saveManualExecutions": true,
+      "errorWorkflow": "3"
     },
     "staticData": null
   },
@@ -3760,10 +3968,11 @@
       }
     },
     "createdAt": "2021-12-18T15:22:00.567Z",
-    "updatedAt": "2021-12-18T15:56:52.074Z",
+    "updatedAt": "2021-12-19T13:00:14.579Z",
     "settings": {
       "saveExecutionProgress": true,
-      "saveManualExecutions": true
+      "saveManualExecutions": true,
+      "errorWorkflow": "3"
     },
     "staticData": null
   }

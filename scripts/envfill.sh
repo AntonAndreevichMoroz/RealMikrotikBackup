@@ -31,6 +31,34 @@ done
 
 while :
 do
+        read -r -p "Хотите использовать шифрование для паролей в базе данных? [Y\n] " DATA_ENCRYPT
+        if [[ $DATA_ENCRYPT =~ ^(Y|y)$ ]]
+        then
+                while :
+                do
+                        read -r -s -p "Введите пароль для шифрования: " DATA_ENCRYPT_PASSWORD
+                        if [[ $DATA_ENCRYPT_PASSWORD != "" ]]
+                        then
+                                sed -i "s/^#\?DATA_ENCRYPT_PASSWORD.*$/DATA_ENCRYPT_PASSWORD=$DATA_ENCRYPT_PASSWORD/g" .env
+                                echo
+                                break 2
+                        else
+                                echo; echo -e "${RED}Пароль не может быть пустым${NC}"
+                                continue
+                        fi
+                done
+        elif [[ $DATA_ENCRYPT =~ ^(N|n)$ ]]
+        then
+                sed -i "s/^DATA_ENCRYPT_PASSWORD.*$/#DATA_ENCRYPT_PASSWORD=/g" .env
+                break
+        else
+                echo -e "${RED}Сделайте правильный выбор${NC}"
+                continue
+        fi
+done
+
+while :
+do
 	read -r -p "Хотите использовать бекапы на основании экспорта? [Y\n] " MK_BACKUP_EXPORT
 	if [[ $MK_BACKUP_EXPORT =~ ^(Y|y)$ ]]
 	then
@@ -186,7 +214,7 @@ if [[ $MK_BACKUP_BINARY =~ ^(Y|y)$ ]]
 then
 	while :
 	do
-		read -r -p "Хотите использовать использовать шифрование для бинарных бекапов? [Y\n] " MK_BACKUP_ENCRYPT
+		read -r -p "Хотите использовать шифрование для бинарных бекапов? [Y\n] " MK_BACKUP_ENCRYPT
 		if [[ $MK_BACKUP_ENCRYPT =~ ^(Y|y)$ ]]
 		then
 			while :

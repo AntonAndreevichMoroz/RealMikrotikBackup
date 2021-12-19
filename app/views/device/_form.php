@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\StringHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Device */
@@ -22,7 +23,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sshuse')->dropDownList(array('0' => 'Нет', '1' => 'Да')) ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+    <?php
+        if (empty($_ENV["DATA_ENCRYPT_PASSWORD"])) {
+            $password=$model->password;
+        } else {
+            $password=\Yii::$app->getSecurity()->decryptByKey(base64_decode($model->password), $_ENV["DATA_ENCRYPT_PASSWORD"]);
+        }
+    ?>
+    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'value' => $password])?>
 
     <?= $form->field($model, 'sshkey')->textarea(['rows' => 4]) ?>
 

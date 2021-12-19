@@ -28,6 +28,11 @@ class DeviceController extends Controller
                             'allow' => true,
                             'roles' => ['@'],
                         ],
+                        [
+                            'allow' => true,
+                            'actions' => ['passdecrypt'],
+                            'roles' => ['?'],
+                        ],
                     ],
                 ],
         ];
@@ -84,14 +89,24 @@ class DeviceController extends Controller
         $model = new Device();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if (empty($_ENV["DATA_ENCRYPT_PASSWORD"])) {
+                if ($model->load($this->request->post()) && $model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                } else {
+                    $model->loadDefaultValues();
+                }
+            } else {
+                if ($model->load($this->request->post())) {
+                    $model->password = base64_encode(\Yii::$app->getSecurity()->encryptByKey($model->password, $_ENV["DATA_ENCRYPT_PASSWORD"]));
+                    if ($model->save()) {
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                } else {
+                    $model->loadDefaultValues();
+                }
             }
-        } else {
-            $model->loadDefaultValues();
         }
-
-        return $this->render('create', [
+            return $this->render('create', [
             'model' => $model,
         ]);
     }
@@ -103,12 +118,24 @@ class DeviceController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+        if ($this->request->isPost) {
+            if (empty($_ENV["DATA_ENCRYPT_PASSWORD"])) {
+                if ($model->load($this->request->post()) && $model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            } else {
+                if ($model->load($this->request->post())) {
+                    $model->password = base64_encode(\Yii::$app->getSecurity()->encryptByKey($model->password, $_ENV["DATA_ENCRYPT_PASSWORD"]));
+                    if ($model->save()) {
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                }
+            }
         }
 
         return $this->render('update', [
@@ -128,6 +155,12 @@ class DeviceController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionPassdecrypt($encryptpass, $secretkey)
+    {
+        $password = \Yii::$app->getSecurity()->decryptByKey(base64_decode($encryptpass), $secretkey);
+        return $password;
     }
 
     public function actionBackupone($id)

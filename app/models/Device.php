@@ -35,7 +35,8 @@ class Device extends \yii\db\ActiveRecord
             [['name', 'ip_address', 'sshport', 'username', 'sshkey'], 'trim'],
             [['sshport'], 'number', 'max' => 65535],
             [['sshkey'], 'match', 'pattern' => '/^-----BEGIN OPENSSH PRIVATE KEY-----\s[\s\S]+?\s-----END OPENSSH PRIVATE KEY-----$/'],
-            [['name', 'username', 'password'], 'string', 'max' => 100],
+            [['password'], 'string'],
+            [['name', 'username'], 'string', 'max' => 100],
             [['ip_address'], 'ip', 'ipv6' => false, 'subnet' => false],
             [['active', 'sshuse'], 'boolean'],
         ];

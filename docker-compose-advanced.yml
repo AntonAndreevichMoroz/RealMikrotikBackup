@@ -27,6 +27,7 @@ services:
       - MYSQL_DATABASE
       - MYSQL_USER
       - MYSQL_PASSWORD
+      - DATA_ENCRYPT_PASSWORD
     depends_on:
       - db
     ports:
@@ -74,6 +75,7 @@ services:
       - MYSQL_DATABASE
       - MYSQL_USER
       - MYSQL_PASSWORD
+      - DATA_ENCRYPT_PASSWORD
       - MK_BACKUP_ENCRYPT_PASSWORD
       - MK_BACKUP_BINARY
       - MK_BACKUP_EXPORT
