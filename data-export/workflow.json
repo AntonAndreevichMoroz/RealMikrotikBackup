@@ -3975,5 +3975,126 @@
       "errorWorkflow": "3"
     },
     "staticData": null
+  },
+  {
+    "id": 9,
+    "name": "ZabbixMonitoring",
+    "active": true,
+    "nodes": [
+      {
+        "parameters": {},
+        "name": "Start",
+        "type": "n8n-nodes-base.start",
+        "typeVersion": 1,
+        "position": [
+          460,
+          120
+        ]
+      },
+      {
+        "parameters": {
+          "path": "lld",
+          "responseMode": "lastNode",
+          "responseData": "allEntries",
+          "options": {}
+        },
+        "name": "Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1,
+        "position": [
+          460,
+          300
+        ],
+        "webhookId": "a1aa560b-4dc0-4d79-8329-9554e860b718"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "=SELECT id,name FROM device WHERE active LIKE '1'"
+        },
+        "name": "MySQL",
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 1,
+        "position": [
+          680,
+          300
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "mySql": {
+            "id": "1",
+            "name": "MySQL account"
+          }
+        },
+        "notes": "Get devices list"
+      },
+      {
+        "parameters": {
+          "path": "getstatus",
+          "responseMode": "lastNode",
+          "options": {}
+        },
+        "name": "Webhook1",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1,
+        "position": [
+          460,
+          500
+        ],
+        "webhookId": "2365c0ed-9766-4cc2-9eae-e74be986399e"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "=SELECT laststatus FROM device WHERE id LIKE '{{ $node[\"Webhook1\"].json[\"query\"][\"id\"] }}'"
+        },
+        "name": "MySQL1",
+        "type": "n8n-nodes-base.mySql",
+        "typeVersion": 1,
+        "position": [
+          680,
+          500
+        ],
+        "notesInFlow": true,
+        "credentials": {
+          "mySql": {
+            "id": "1",
+            "name": "MySQL account"
+          }
+        },
+        "notes": "Get devices list"
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "MySQL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook1": {
+        "main": [
+          [
+            {
+              "node": "MySQL1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "createdAt": "2022-03-12T05:39:01.228Z",
+    "updatedAt": "2022-03-12T08:45:14.472Z",
+    "settings": {
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "staticData": null
   }
 ]

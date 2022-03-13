@@ -33,6 +33,18 @@ class DeviceController extends Controller
                             'actions' => ['passdecrypt'],
                             'roles' => ['?'],
                         ],
+                        [
+                            'allow' => true,
+                            'actions' => ['getalldevices','getlaststatus'],
+                            'matchCallback' => function () {
+                                 $headers = \Yii::$app->request->headers;
+                                 if ($headers->has('authkey')) {
+			             return $headers->get('authkey') == $_ENV["ZABBIX_AUTHKEY"];
+                                 } else {
+                                     return false;
+                                 };
+			    },
+                        ],
                     ],
                 ],
         ];
@@ -215,6 +227,26 @@ class DeviceController extends Controller
             return \Yii::$app->response->sendContentAsFile($content, $filename);
         } else {
             return $this->redirect(['view', 'id' => $id, 'downloaderror' => "true"]);
+        }
+    }
+
+    public function actionGetalldevices()
+    {
+        $response = \Yii::$app->n8n->get('lld', [])->send();
+        if ($response->isOk) {
+            return $response->content;
+        } else {
+            return false;
+        }
+    }
+
+    public function actionGetlaststatus($id)
+    {
+        $response = \Yii::$app->n8n->get('getstatus', ['id' => $id])->send();
+        if ($response->isOk) {
+            return $response->content;
+        } else {
+            return false;
         }
     }
 

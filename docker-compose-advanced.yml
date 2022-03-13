@@ -28,6 +28,7 @@ services:
       - MYSQL_USER
       - MYSQL_PASSWORD
       - DATA_ENCRYPT_PASSWORD
+      - ZABBIX_AUTHKEY
     depends_on:
       - db
     ports:
