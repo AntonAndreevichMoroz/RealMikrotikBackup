@@ -12,7 +12,8 @@
         "position": [
           260,
           200
-        ]
+        ],
+        "id": "27984f46-8cd9-4506-996a-5af425bf8dbb"
       },
       {
         "parameters": {
@@ -26,7 +27,8 @@
         "position": [
           260,
           40
-        ]
+        ],
+        "id": "b242395c-5d6d-486f-ae9e-33a2d742b58d"
       },
       {
         "parameters": {
@@ -40,7 +42,8 @@
           660,
           200
         ],
-        "continueOnFail": true
+        "continueOnFail": true,
+        "id": "4e9af365-f616-4dfc-8fde-fbf76082da32"
       },
       {
         "parameters": {
@@ -59,7 +62,8 @@
         "position": [
           860,
           200
-        ]
+        ],
+        "id": "84c80c38-f831-4000-a379-520f69fe5e17"
       },
       {
         "parameters": {
@@ -80,7 +84,8 @@
             "id": "3",
             "name": "Git account"
           }
-        }
+        },
+        "id": "100c26e0-6588-485d-a23d-47595640d243"
       },
       {
         "parameters": {
@@ -100,7 +105,8 @@
         "position": [
           460,
           200
-        ]
+        ],
+        "id": "52f284e5-e120-47a9-a62d-9fbed4833baf"
       },
       {
         "parameters": {
@@ -116,7 +122,8 @@
         "position": [
           1200,
           200
-        ]
+        ],
+        "id": "b8cafc7d-3939-4407-a13f-46ab83d7a4f8"
       },
       {
         "parameters": {
@@ -132,7 +139,8 @@
         "position": [
           1420,
           200
-        ]
+        ],
+        "id": "b19a9a55-9935-42c2-92a9-a072fb38066e"
       },
       {
         "parameters": {
@@ -151,7 +159,8 @@
         "position": [
           460,
           40
-        ]
+        ],
+        "id": "911d62ef-aad0-4bf4-bd18-60e1105dfe31"
       },
       {
         "parameters": {
@@ -164,7 +173,8 @@
           660,
           40
         ],
-        "continueOnFail": true
+        "continueOnFail": true,
+        "id": "8abcc32e-d2c1-4ac3-a940-7c240bbd2937"
       }
     ],
     "connections": {
@@ -275,11 +285,13 @@
       }
     },
     "createdAt": "2021-09-05T17:53:07.492Z",
-    "updatedAt": "2021-12-07T10:00:04.813Z",
+    "updatedAt": "2022-08-20T08:17:30.310Z",
     "settings": {
       "errorWorkflow": "3"
     },
-    "staticData": null
+    "staticData": null,
+    "pinData": null,
+    "tags": []
   },
   {
     "id": 2,
@@ -294,7 +306,8 @@
         "position": [
           120,
           300
-        ]
+        ],
+        "id": "618d424b-89b2-400b-afec-cd2551bf48e2"
       },
       {
         "parameters": {
@@ -315,7 +328,8 @@
             "name": "MySQL account"
           }
         },
-        "notes": "Get devices list"
+        "notes": "Get devices list",
+        "id": "7c2802e9-0f0d-4d00-8114-d3ef5bbb4997"
       },
       {
         "parameters": {
@@ -336,7 +350,8 @@
         "position": [
           1000,
           120
-        ]
+        ],
+        "id": "1fe9e7fd-6d94-44e7-96b6-e66c9710cdca"
       },
       {
         "parameters": {
@@ -357,7 +372,8 @@
         "position": [
           1000,
           480
-        ]
+        ],
+        "id": "b84fe0af-4dc1-405b-ae84-2621af5b6cc5"
       },
       {
         "parameters": {},
@@ -367,7 +383,8 @@
         "position": [
           1240,
           540
-        ]
+        ],
+        "id": "b1b69646-82ca-4040-8188-f96864821db1"
       },
       {
         "parameters": {},
@@ -377,7 +394,8 @@
         "position": [
           1240,
           210
-        ]
+        ],
+        "id": "042c01fd-03d9-4280-97d7-d08ff8892c64"
       },
       {
         "parameters": {
@@ -390,7 +408,8 @@
         "position": [
           3000,
           240
-        ]
+        ],
+        "id": "2869b54c-64d7-4046-ab50-975281243008"
       },
       {
         "parameters": {
@@ -410,7 +429,8 @@
         "position": [
           1920,
           360
-        ]
+        ],
+        "id": "65e9e39a-2ab5-4043-bdd3-8001892f7e88"
       },
       {
         "parameters": {
@@ -431,7 +451,8 @@
             "id": "3",
             "name": "Git account"
           }
-        }
+        },
+        "id": "24b1931b-6a67-4f85-b44d-625de5c143c6"
       },
       {
         "parameters": {
@@ -444,7 +465,8 @@
         "position": [
           520,
           300
-        ]
+        ],
+        "id": "ddce702f-46c2-49c9-baf2-c415ee72d161"
       },
       {
         "parameters": {
@@ -464,7 +486,8 @@
           3760,
           200
         ],
-        "typeVersion": 1
+        "typeVersion": 1,
+        "id": "65ca352f-74fe-4d83-a5a3-914725a86f69"
       },
       {
         "parameters": {
@@ -479,7 +502,8 @@
         "position": [
           2300,
           360
-        ]
+        ],
+        "id": "7730c562-a10d-4c54-afba-f952195d4f3e"
       },
       {
         "parameters": {
@@ -493,7 +517,8 @@
         "position": [
           2100,
           360
-        ]
+        ],
+        "id": "e0986aa3-eb7f-400d-9983-f9e538ace4bb"
       },
       {
         "parameters": {
@@ -512,7 +537,8 @@
         "position": [
           120,
           100
-        ]
+        ],
+        "id": "f78614e0-9021-4693-aa14-9f60369309f0"
       },
       {
         "parameters": {
@@ -535,7 +561,8 @@
         "position": [
           2700,
           40
-        ]
+        ],
+        "id": "469fca19-00e3-4874-a35a-de15436a31e0"
       },
       {
         "parameters": {
@@ -558,7 +585,8 @@
         "position": [
           2700,
           360
-        ]
+        ],
+        "id": "92580c17-9e7f-474b-8aa4-913820b75981"
       },
       {
         "parameters": {
@@ -611,7 +639,8 @@
         "position": [
           1440,
           40
-        ]
+        ],
+        "id": "a785acd0-3db5-4d4d-9e81-a8b77de2000d"
       },
       {
         "parameters": {
@@ -661,7 +690,8 @@
         "position": [
           1240,
           380
-        ]
+        ],
+        "id": "7264c3f3-f4b2-4808-a6e4-ecc744ac6ec5"
       },
       {
         "parameters": {
@@ -692,7 +722,8 @@
         "position": [
           3400,
           260
-        ]
+        ],
+        "id": "78070f1b-ab07-4e1e-8a37-fed5b9f375f8"
       },
       {
         "parameters": {
@@ -712,7 +743,8 @@
             "id": "1",
             "name": "MySQL account"
           }
-        }
+        },
+        "id": "b24bb78d-2798-4524-b25e-628eaf68e08c"
       },
       {
         "parameters": {
@@ -743,7 +775,8 @@
         "position": [
           3400,
           20
-        ]
+        ],
+        "id": "350fe5c4-1aca-4078-a589-327f8c9031f5"
       },
       {
         "parameters": {
@@ -763,7 +796,8 @@
             "id": "1",
             "name": "MySQL account"
           }
-        }
+        },
+        "id": "f9389eff-a69e-4879-9010-ec3fa883e6c3"
       },
       {
         "parameters": {
@@ -787,7 +821,8 @@
         "position": [
           3200,
           80
-        ]
+        ],
+        "id": "ddf80838-aef3-4b34-a9fc-8d488a3dc166"
       },
       {
         "parameters": {
@@ -801,7 +836,8 @@
           120,
           520
         ],
-        "webhookId": "33deb629-14e4-4a24-b245-50dfd6fe7cb5"
+        "webhookId": "33deb629-14e4-4a24-b245-50dfd6fe7cb5",
+        "id": "f6eb0bf4-eb93-4857-9bad-3283f9a0d137"
       },
       {
         "parameters": {
@@ -815,7 +851,8 @@
           120,
           -60
         ],
-        "webhookId": "c4790d77-a07e-4507-8b58-c3fd4a0f8623"
+        "webhookId": "c4790d77-a07e-4507-8b58-c3fd4a0f8623",
+        "id": "1a677bad-72fe-41f5-ab58-0df27d0e4dbc"
       },
       {
         "parameters": {
@@ -836,7 +873,8 @@
             "name": "MySQL account"
           }
         },
-        "notes": "Get devices list"
+        "notes": "Get devices list",
+        "id": "62d0008f-5beb-47d6-b9fe-c76aec212c22"
       },
       {
         "parameters": {
@@ -852,7 +890,8 @@
         "position": [
           3040,
           80
-        ]
+        ],
+        "id": "7d4b0a5f-9d6f-4c2f-8ce5-4a084b33be58"
       },
       {
         "parameters": {
@@ -876,7 +915,8 @@
         "position": [
           3960,
           200
-        ]
+        ],
+        "id": "59d8d597-ca64-48c9-a358-ec2a49bf9b0f"
       },
       {
         "parameters": {
@@ -897,7 +937,8 @@
             "name": "MySQL account"
           }
         },
-        "notes": "Get devices list"
+        "notes": "Get devices list",
+        "id": "cf09ff18-f057-4fb6-984d-eedad4937f94"
       },
       {
         "parameters": {
@@ -917,7 +958,8 @@
             "id": "5",
             "name": "Telegram account"
           }
-        }
+        },
+        "id": "f1617c27-e0df-4de7-9b9e-22137b8c50d5"
       },
       {
         "parameters": {
@@ -936,7 +978,8 @@
         "position": [
           4340,
           80
-        ]
+        ],
+        "id": "5937bc9e-9c29-4a57-91bb-239e77c8c67a"
       },
       {
         "parameters": {
@@ -955,7 +998,8 @@
         "position": [
           4340,
           320
-        ]
+        ],
+        "id": "4130a6b4-adcc-4017-bba4-ef89eedb3d0c"
       },
       {
         "parameters": {
@@ -977,7 +1021,8 @@
             "id": "4",
             "name": "SMTP account"
           }
-        }
+        },
+        "id": "4d7a95fc-2cf1-44fb-b5cd-e9939cb514f8"
       },
       {
         "parameters": {
@@ -993,7 +1038,8 @@
         "position": [
           1240,
           40
-        ]
+        ],
+        "id": "53474382-debc-4fc4-80ca-55819f9bec95"
       },
       {
         "parameters": {
@@ -1006,7 +1052,8 @@
           1460,
           380
         ],
-        "continueOnFail": true
+        "continueOnFail": true,
+        "id": "2398c4af-a25d-4877-858f-4126101ce029"
       },
       {
         "parameters": {
@@ -1019,7 +1066,8 @@
           1640,
           40
         ],
-        "continueOnFail": true
+        "continueOnFail": true,
+        "id": "dfbf16b0-4895-4e0b-9814-8e10ee37f331"
       },
       {
         "parameters": {
@@ -1038,7 +1086,8 @@
         "position": [
           1660,
           480
-        ]
+        ],
+        "id": "bb2f9a61-cf86-4c6c-bc58-9df2fc9710a1"
       },
       {
         "parameters": {
@@ -1065,7 +1114,8 @@
         "position": [
           860,
           300
-        ]
+        ],
+        "id": "68b81c98-68a4-45f4-b683-72c53e02aaf2"
       },
       {
         "parameters": {
@@ -1084,7 +1134,8 @@
         "position": [
           700,
           300
-        ]
+        ],
+        "id": "327d6ef1-1d5c-4b89-a2e7-828458d4dafd"
       }
     ],
     "connections": {
@@ -1553,11 +1604,13 @@
       }
     },
     "createdAt": "2021-11-15T19:15:31.061Z",
-    "updatedAt": "2021-12-19T13:15:53.318Z",
+    "updatedAt": "2022-08-20T08:17:30.456Z",
     "settings": {
       "errorWorkflow": "3"
     },
-    "staticData": null
+    "staticData": null,
+    "pinData": null,
+    "tags": []
   },
   {
     "id": 3,
@@ -1572,7 +1625,8 @@
         "position": [
           240,
           300
-        ]
+        ],
+        "id": "16f3301b-d2c0-49e0-95fd-b792b3704be5"
       },
       {
         "parameters": {
@@ -1591,7 +1645,8 @@
         "position": [
           460,
           120
-        ]
+        ],
+        "id": "98c6003d-468e-4004-9bef-976bb966c74f"
       },
       {
         "parameters": {
@@ -1610,7 +1665,8 @@
         "position": [
           460,
           300
-        ]
+        ],
+        "id": "6c283bb2-c205-451a-94a2-0c8311acaeb6"
       },
       {
         "parameters": {
@@ -1632,7 +1688,8 @@
             "id": "4",
             "name": "SMTP account"
           }
-        }
+        },
+        "id": "3e9bbeb8-d543-42fa-9aac-0fb49443d809"
       },
       {
         "parameters": {
@@ -1652,7 +1709,8 @@
             "id": "5",
             "name": "Telegram account"
           }
-        }
+        },
+        "id": "beb466a0-71f3-4e36-9c6c-fb453aca0d3a"
       },
       {
         "parameters": {},
@@ -1662,7 +1720,8 @@
         "position": [
           240,
           120
-        ]
+        ],
+        "id": "1282bebd-19e7-4f48-afcf-c2a7c2e528de"
       },
       {
         "parameters": {
@@ -1676,7 +1735,8 @@
           240,
           480
         ],
-        "webhookId": "ad03b049-ec34-4683-b405-49010361dac2"
+        "webhookId": "ad03b049-ec34-4683-b405-49010361dac2",
+        "id": "8a33e2b7-c652-418c-adb1-31355f033836"
       }
     ],
     "connections": {
@@ -1736,9 +1796,11 @@
       }
     },
     "createdAt": "2021-11-27T12:10:40.170Z",
-    "updatedAt": "2021-12-17T17:32:12.338Z",
+    "updatedAt": "2022-08-20T08:17:30.464Z",
     "settings": {},
-    "staticData": null
+    "staticData": null,
+    "pinData": null,
+    "tags": []
   },
   {
     "id": 4,
@@ -1753,7 +1815,8 @@
         "position": [
           240,
           300
-        ]
+        ],
+        "id": "959ca50f-7f83-459c-b012-1c47659b698d"
       },
       {
         "parameters": {
@@ -1765,7 +1828,8 @@
         "position": [
           1200,
           220
-        ]
+        ],
+        "id": "d530fa2b-6482-4987-961b-7a3330e77681"
       },
       {
         "parameters": {
@@ -1793,7 +1857,8 @@
         "position": [
           420,
           300
-        ]
+        ],
+        "id": "0bfbd71b-fae0-48c1-a131-8fb958b02569"
       },
       {
         "parameters": {
@@ -1814,7 +1879,8 @@
             "name": "MySQL account"
           }
         },
-        "notes": "Get device list"
+        "notes": "Get device list",
+        "id": "b2dcca7d-fac9-448b-81c6-7be2fa8d81f8"
       },
       {
         "parameters": {
@@ -1827,7 +1893,8 @@
         "position": [
           1000,
           220
-        ]
+        ],
+        "id": "445f52c4-2a66-4dd9-81b1-0d895a53f0f4"
       },
       {
         "parameters": {
@@ -1846,7 +1913,8 @@
         "position": [
           600,
           300
-        ]
+        ],
+        "id": "b510e0d3-7af9-43e3-b7d6-86a71042b464"
       },
       {
         "parameters": {
@@ -1858,7 +1926,8 @@
         "position": [
           1560,
           240
-        ]
+        ],
+        "id": "3f8d99db-d867-47d7-ace5-698cb1ecf420"
       },
       {
         "parameters": {
@@ -1877,7 +1946,8 @@
         "position": [
           1380,
           220
-        ]
+        ],
+        "id": "9813a442-6d07-45f0-b206-f0e2a311a632"
       },
       {
         "parameters": {
@@ -1896,7 +1966,8 @@
         "position": [
           240,
           140
-        ]
+        ],
+        "id": "8fd0529e-7950-409a-aef1-8c24d2eb4852"
       },
       {
         "parameters": {
@@ -1916,7 +1987,8 @@
           1740,
           120
         ],
-        "typeVersion": 1
+        "typeVersion": 1,
+        "id": "25b0bc08-33ad-4179-8b6b-ee0840720a7f"
       }
     ],
     "connections": {
@@ -2040,12 +2112,14 @@
       }
     },
     "createdAt": "2021-12-02T07:59:06.522Z",
-    "updatedAt": "2021-12-14T11:21:04.225Z",
+    "updatedAt": "2022-08-20T08:17:30.472Z",
     "settings": {
       "saveExecutionProgress": true,
       "saveManualExecutions": true
     },
-    "staticData": null
+    "staticData": null,
+    "pinData": null,
+    "tags": []
   },
   {
     "id": 5,
@@ -2060,7 +2134,8 @@
         "position": [
           240,
           300
-        ]
+        ],
+        "id": "19e5ac0a-d936-42bc-b8e3-03f48e05c887"
       },
       {
         "parameters": {
@@ -2077,7 +2152,8 @@
           240,
           500
         ],
-        "webhookId": "d792541a-0838-4ded-94d4-a3395b7971ae"
+        "webhookId": "d792541a-0838-4ded-94d4-a3395b7971ae",
+        "id": "ceae660e-92a2-43f5-b6e2-9977100f8d40"
       },
       {
         "parameters": {
@@ -2092,7 +2168,8 @@
         "position": [
           1160,
           500
-        ]
+        ],
+        "id": "3f7c80ee-8ce0-4544-b559-981df5b24035"
       },
       {
         "parameters": {
@@ -2104,7 +2181,8 @@
         "position": [
           960,
           500
-        ]
+        ],
+        "id": "ee40618b-0ef2-4e78-b5a2-a96898bc51a3"
       },
       {
         "parameters": {
@@ -2129,7 +2207,8 @@
         "position": [
           460,
           500
-        ]
+        ],
+        "id": "32089dba-526c-40aa-aaee-0bc3d4c99dd4"
       },
       {
         "parameters": {
@@ -2149,7 +2228,8 @@
         "position": [
           660,
           500
-        ]
+        ],
+        "id": "8d23108e-1596-47c5-8fe4-98dae8426a4c"
       },
       {
         "parameters": {
@@ -2161,7 +2241,8 @@
         "position": [
           660,
           340
-        ]
+        ],
+        "id": "36bc1fcc-d2c5-420b-abf0-6f642517f0a6"
       },
       {
         "parameters": {
@@ -2181,7 +2262,8 @@
         "position": [
           820,
           340
-        ]
+        ],
+        "id": "385449c4-913d-4e5d-a11c-493611d49c88"
       },
       {
         "parameters": {
@@ -2196,7 +2278,8 @@
         "position": [
           660,
           660
-        ]
+        ],
+        "id": "8460bdb1-6637-454b-af97-bc01f9af56c4"
       }
     ],
     "connections": {
@@ -2283,12 +2366,14 @@
       }
     },
     "createdAt": "2021-12-03T18:10:27.992Z",
-    "updatedAt": "2021-12-11T16:25:04.331Z",
+    "updatedAt": "2022-08-20T08:17:30.480Z",
     "settings": {
       "saveExecutionProgress": "DEFAULT",
       "errorWorkflow": "3"
     },
-    "staticData": null
+    "staticData": null,
+    "pinData": null,
+    "tags": []
   },
   {
     "id": 6,
@@ -2303,7 +2388,8 @@
         "position": [
           -340,
           300
-        ]
+        ],
+        "id": "34137d32-da07-4773-9d24-da5fe8ae74bc"
       },
       {
         "parameters": {
@@ -2318,7 +2404,8 @@
           -340,
           460
         ],
-        "webhookId": "17577a90-4e1d-4d14-9cd5-be38e35cf2e1"
+        "webhookId": "17577a90-4e1d-4d14-9cd5-be38e35cf2e1",
+        "id": "98eb46ad-c571-4aeb-88ef-f82bd48bf3df"
       },
       {
         "parameters": {
@@ -2334,7 +2421,8 @@
         "position": [
           1220,
           360
-        ]
+        ],
+        "id": "3052c54e-9c8f-4420-a57a-82e12e9fcec0"
       },
       {
         "parameters": {
@@ -2355,7 +2443,8 @@
             "name": "MySQL account"
           }
         },
-        "notes": "Get devices list"
+        "notes": "Get devices list",
+        "id": "15613f19-0c5a-432c-906c-df15fabb5c9f"
       },
       {
         "parameters": {
@@ -2367,7 +2456,8 @@
         "position": [
           760,
           480
-        ]
+        ],
+        "id": "a9b72375-8a9c-4b25-a31a-3fa052cc69cd"
       },
       {
         "parameters": {
@@ -2386,7 +2476,8 @@
         "position": [
           1000,
           480
-        ]
+        ],
+        "id": "eb8db1ea-561c-4aa0-bc4e-1670a8a8e7d4"
       },
       {
         "parameters": {
@@ -2402,7 +2493,8 @@
         "position": [
           1220,
           520
-        ]
+        ],
+        "id": "c73b04a0-56d5-41d2-bc2f-7590d2d923c1"
       },
       {
         "parameters": {
@@ -2423,7 +2515,8 @@
         "position": [
           540,
           380
-        ]
+        ],
+        "id": "3e96baec-05cd-4c6d-b750-e307295b32bc"
       },
       {
         "parameters": {
@@ -2447,7 +2540,8 @@
           }
         },
         "continueOnFail": true,
-        "notes": "Create binary backup"
+        "notes": "Create binary backup",
+        "id": "ccb35d9a-ec5b-4b9d-9d5c-8da11aa5cffd"
       },
       {
         "parameters": {
@@ -2466,7 +2560,8 @@
         "position": [
           1000,
           240
-        ]
+        ],
+        "id": "1ceb485f-0927-4402-b6c2-c39556c3ee78"
       },
       {
         "parameters": {
@@ -2482,7 +2577,8 @@
         "position": [
           1220,
           200
-        ]
+        ],
+        "id": "69aad2cf-4ac1-4fcc-b307-1bbd4c8e6f38"
       },
       {
         "parameters": {
@@ -2509,7 +2605,8 @@
         "position": [
           360,
           380
-        ]
+        ],
+        "id": "a5ad739b-7b97-4a9b-a0e3-3967cd0a9506"
       },
       {
         "parameters": {
@@ -2528,7 +2625,8 @@
         "position": [
           160,
           380
-        ]
+        ],
+        "id": "e7313162-c469-44ad-8b8e-0696903ee509"
       }
     ],
     "connections": {
@@ -2672,9 +2770,11 @@
       }
     },
     "createdAt": "2021-12-14T09:28:03.807Z",
-    "updatedAt": "2021-12-19T12:38:05.388Z",
+    "updatedAt": "2022-08-20T08:17:30.493Z",
     "settings": {},
-    "staticData": null
+    "staticData": null,
+    "pinData": null,
+    "tags": []
   },
   {
     "id": 7,
@@ -2689,11 +2789,12 @@
         "position": [
           -240,
           260
-        ]
+        ],
+        "id": "909cd4c1-1176-4198-bc87-e82d2442e4d2"
       },
       {
         "parameters": {
-          "command": "=/export{{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? \" hide-sensitive\" : \"\" }} file={{$node[\"Start\"].json[\"filenamersc\"]}}",
+          "command": "={{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? 'if (:put [/system routerboard get current-firmware]~\"^7\") do={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '} else={/export hide-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' : 'if (:put [/system routerboard get current-firmware]~\"^7\") do={[:parse \"/export show-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '\"]} else={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' }}",
           "cwd": "={{}}"
         },
         "name": "SSH2",
@@ -2704,6 +2805,7 @@
           360
         ],
         "notesInFlow": true,
+        "id": "2c344f9c-4221-4cd6-bf30-f9a0df55e3aa",
         "credentials": {
           "sshPassword": {
             "id": "2",
@@ -2730,6 +2832,7 @@
         "retryOnFail": true,
         "maxTries": 2,
         "waitBetweenTries": 3000,
+        "id": "8b800b52-6271-48ec-bbac-3ea5689f5706",
         "credentials": {
           "sshPassword": {
             "id": "2",
@@ -2749,7 +2852,8 @@
         "position": [
           540,
           360
-        ]
+        ],
+        "id": "c3b7b886-3584-4fdc-ac3f-aa0994df615a"
       },
       {
         "parameters": {
@@ -2764,6 +2868,7 @@
           360
         ],
         "notesInFlow": true,
+        "id": "16ef82e2-b4d9-4550-9d32-a33a3c158e30",
         "credentials": {
           "sshPassword": {
             "id": "2",
@@ -2784,6 +2889,7 @@
           940,
           360
         ],
+        "id": "98deddcc-b4ec-42cf-8c1f-d36bc9ffb077",
         "continueOnFail": true
       },
       {
@@ -2804,7 +2910,8 @@
         "position": [
           240,
           560
-        ]
+        ],
+        "id": "6617f6bd-7b71-4b99-beef-c3860d85a8de"
       },
       {
         "parameters": {
@@ -2824,7 +2931,8 @@
         "position": [
           440,
           600
-        ]
+        ],
+        "id": "929e4203-58a2-490d-b54f-c0f14cac34fa"
       },
       {
         "parameters": {
@@ -2844,7 +2952,8 @@
         "position": [
           840,
           620
-        ]
+        ],
+        "id": "ca48849d-83fb-4b11-83d9-28c0f83c000f"
       },
       {
         "parameters": {
@@ -2864,7 +2973,8 @@
         "position": [
           1040,
           540
-        ]
+        ],
+        "id": "1e20e0b5-f28f-406e-ac73-39b6fa73c4c0"
       },
       {
         "parameters": {
@@ -2885,7 +2995,8 @@
         "position": [
           1360,
           280
-        ]
+        ],
+        "id": "e943b88b-6124-4e8e-8f19-8b786d062df8"
       },
       {
         "parameters": {
@@ -2906,12 +3017,13 @@
         "position": [
           -60,
           260
-        ]
+        ],
+        "id": "6c67a482-afe2-43fc-9b99-2d131ad350b4"
       },
       {
         "parameters": {
           "authentication": "privateKey",
-          "command": "=/export{{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? \" hide-sensitive\" : \"\" }} file={{$node[\"Start\"].json[\"filenamersc\"]}}",
+          "command": "={{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? 'if (:put [/system routerboard get current-firmware]~\"^7\") do={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '} else={/export hide-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' : 'if (:put [/system routerboard get current-firmware]~\"^7\") do={[:parse \"/export show-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '\"]} else={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' }}",
           "cwd": "={{}}"
         },
         "name": "SSH",
@@ -2922,6 +3034,7 @@
           -180
         ],
         "notesInFlow": true,
+        "id": "6eb283bc-b4a9-4028-b131-d47bd3738040",
         "credentials": {
           "sshPrivateKey": {
             "id": "6",
@@ -2949,6 +3062,7 @@
         "retryOnFail": true,
         "maxTries": 2,
         "waitBetweenTries": 3000,
+        "id": "8c0d37c2-7dec-4087-8b41-7d7ca775bd1e",
         "credentials": {
           "sshPrivateKey": {
             "id": "6",
@@ -2968,7 +3082,8 @@
         "position": [
           500,
           -180
-        ]
+        ],
+        "id": "c7347721-0ef1-49ad-a971-70087396d1b7"
       },
       {
         "parameters": {
@@ -2984,6 +3099,7 @@
           -180
         ],
         "notesInFlow": true,
+        "id": "c6c0a234-9192-4fa7-916e-f03b76de0057",
         "credentials": {
           "sshPrivateKey": {
             "id": "6",
@@ -3004,6 +3120,7 @@
           900,
           -180
         ],
+        "id": "ed5d57b3-921a-4b13-9412-ae78c810c857",
         "continueOnFail": true
       },
       {
@@ -3024,7 +3141,8 @@
         "position": [
           200,
           20
-        ]
+        ],
+        "id": "ea5e7d7c-a423-410b-9920-12fd638426bd"
       },
       {
         "parameters": {
@@ -3044,7 +3162,8 @@
         "position": [
           400,
           60
-        ]
+        ],
+        "id": "dfc27ab4-076e-4ca2-819b-45defa5fb9c1"
       },
       {
         "parameters": {
@@ -3064,7 +3183,8 @@
         "position": [
           800,
           80
-        ]
+        ],
+        "id": "2a51b6f5-0365-45f1-b8b9-8edd4432cc18"
       },
       {
         "parameters": {
@@ -3084,7 +3204,8 @@
         "position": [
           1000,
           0
-        ]
+        ],
+        "id": "66a6e2cf-584a-46ff-b2ac-b8c4378b5cb2"
       },
       {
         "parameters": {
@@ -3105,7 +3226,8 @@
         "position": [
           1360,
           60
-        ]
+        ],
+        "id": "9caf63a5-1ac1-4b61-9634-3c808704a479"
       }
     ],
     "connections": {
@@ -3376,13 +3498,15 @@
       }
     },
     "createdAt": "2021-12-18T14:59:02.109Z",
-    "updatedAt": "2021-12-19T12:59:58.739Z",
+    "updatedAt": "2022-08-20T08:19:12.517Z",
     "settings": {
       "saveExecutionProgress": true,
       "saveManualExecutions": true,
       "errorWorkflow": "3"
     },
-    "staticData": null
+    "staticData": null,
+    "pinData": {},
+    "tags": []
   },
   {
     "id": 8,
@@ -3397,7 +3521,8 @@
         "position": [
           220,
           320
-        ]
+        ],
+        "id": "f07b64ee-5121-4b40-9d18-444fa23835ef"
       },
       {
         "parameters": {
@@ -3420,7 +3545,8 @@
           }
         },
         "continueOnFail": true,
-        "notes": "Create binary backup"
+        "notes": "Create binary backup",
+        "id": "7a5c0650-5e6e-4b92-82fa-57ff61e7d2e5"
       },
       {
         "parameters": {
@@ -3446,7 +3572,8 @@
           }
         },
         "continueOnFail": true,
-        "notes": "Download binary backup"
+        "notes": "Download binary backup",
+        "id": "60013d28-4010-47cb-9b41-e16d0a6d23da"
       },
       {
         "parameters": {
@@ -3468,7 +3595,8 @@
           }
         },
         "continueOnFail": true,
-        "notes": "Delete binary backup"
+        "notes": "Delete binary backup",
+        "id": "729b576a-b34f-406d-811f-90c5387ecd62"
       },
       {
         "parameters": {
@@ -3488,7 +3616,8 @@
         "position": [
           700,
           480
-        ]
+        ],
+        "id": "8158ccf9-58a3-4456-aa00-59e4040c20c3"
       },
       {
         "parameters": {
@@ -3508,7 +3637,8 @@
         "position": [
           900,
           400
-        ]
+        ],
+        "id": "eefb309c-fbbd-4eca-9e43-f4357b3cf30c"
       },
       {
         "parameters": {
@@ -3520,7 +3650,8 @@
         "position": [
           1000,
           640
-        ]
+        ],
+        "id": "5accd90e-6eb8-4cef-aeb8-e593ed3f607f"
       },
       {
         "parameters": {
@@ -3540,7 +3671,8 @@
         "position": [
           1300,
           480
-        ]
+        ],
+        "id": "5f83dee8-015a-4b82-b218-dbf46588ab09"
       },
       {
         "parameters": {
@@ -3561,7 +3693,8 @@
         "position": [
           1560,
           420
-        ]
+        ],
+        "id": "aad72c1d-8c35-4c3e-a9ab-47ed0cf56c94"
       },
       {
         "parameters": {
@@ -3582,7 +3715,8 @@
         "position": [
           400,
           320
-        ]
+        ],
+        "id": "7d10e6c9-9d47-4625-8853-1bebe07f2c83"
       },
       {
         "parameters": {
@@ -3606,7 +3740,8 @@
           }
         },
         "continueOnFail": true,
-        "notes": "Create binary backup"
+        "notes": "Create binary backup",
+        "id": "f469685f-ebb6-4ba2-bc42-2850ef07e072"
       },
       {
         "parameters": {
@@ -3633,7 +3768,8 @@
           }
         },
         "continueOnFail": true,
-        "notes": "Download binary backup"
+        "notes": "Download binary backup",
+        "id": "2f4337c7-be2e-4fe7-a17d-ada9c1a909d8"
       },
       {
         "parameters": {
@@ -3656,7 +3792,8 @@
           }
         },
         "continueOnFail": true,
-        "notes": "Delete binary backup"
+        "notes": "Delete binary backup",
+        "id": "7f489d8e-79ce-4d49-8bcb-654fa50dfe2f"
       },
       {
         "parameters": {
@@ -3676,7 +3813,8 @@
         "position": [
           720,
           -80
-        ]
+        ],
+        "id": "068c0cd4-958c-48e0-a898-cc856f111ffd"
       },
       {
         "parameters": {
@@ -3696,7 +3834,8 @@
         "position": [
           940,
           -180
-        ]
+        ],
+        "id": "2184f668-4dca-4e58-8489-2a4261f5b5b3"
       },
       {
         "parameters": {
@@ -3708,7 +3847,8 @@
         "position": [
           1020,
           80
-        ]
+        ],
+        "id": "ab17738d-18a6-4551-8d3f-3c8b99ad1004"
       },
       {
         "parameters": {
@@ -3728,7 +3868,8 @@
         "position": [
           1320,
           -80
-        ]
+        ],
+        "id": "dc6c7c9c-6951-4fd1-80b9-97ab9cd511d5"
       },
       {
         "parameters": {
@@ -3749,7 +3890,8 @@
         "position": [
           1560,
           120
-        ]
+        ],
+        "id": "eae65a09-650e-45c7-98d5-bbb219e2579f"
       }
     ],
     "connections": {
@@ -3968,13 +4110,15 @@
       }
     },
     "createdAt": "2021-12-18T15:22:00.567Z",
-    "updatedAt": "2021-12-19T13:00:14.579Z",
+    "updatedAt": "2022-08-20T08:17:30.511Z",
     "settings": {
       "saveExecutionProgress": true,
       "saveManualExecutions": true,
       "errorWorkflow": "3"
     },
-    "staticData": null
+    "staticData": null,
+    "pinData": null,
+    "tags": []
   },
   {
     "id": 9,
@@ -3989,7 +4133,8 @@
         "position": [
           460,
           120
-        ]
+        ],
+        "id": "79f5e11f-f4ab-49ac-86b2-dbc546ea1bd8"
       },
       {
         "parameters": {
@@ -4005,7 +4150,8 @@
           460,
           300
         ],
-        "webhookId": "a1aa560b-4dc0-4d79-8329-9554e860b718"
+        "webhookId": "a1aa560b-4dc0-4d79-8329-9554e860b718",
+        "id": "7279b43e-db68-4dd1-bd55-48ea2197194f"
       },
       {
         "parameters": {
@@ -4026,7 +4172,8 @@
             "name": "MySQL account"
           }
         },
-        "notes": "Get devices list"
+        "notes": "Get devices list",
+        "id": "44f9727e-8cf0-4bb0-a619-5e6078d4fb81"
       },
       {
         "parameters": {
@@ -4041,7 +4188,8 @@
           460,
           500
         ],
-        "webhookId": "2365c0ed-9766-4cc2-9eae-e74be986399e"
+        "webhookId": "2365c0ed-9766-4cc2-9eae-e74be986399e",
+        "id": "f0baea9c-a5ee-409b-95b9-2747fc8f094c"
       },
       {
         "parameters": {
@@ -4062,7 +4210,8 @@
             "name": "MySQL account"
           }
         },
-        "notes": "Get devices list"
+        "notes": "Get devices list",
+        "id": "065f08f0-915c-4fcd-b7af-854360100e51"
       }
     ],
     "connections": {
@@ -4090,11 +4239,13 @@
       }
     },
     "createdAt": "2022-03-12T05:39:01.228Z",
-    "updatedAt": "2022-03-12T08:45:14.472Z",
+    "updatedAt": "2022-08-20T08:17:30.524Z",
     "settings": {
       "saveExecutionProgress": true,
       "saveManualExecutions": true
     },
-    "staticData": null
+    "staticData": null,
+    "pinData": null,
+    "tags": []
   }
 ]
