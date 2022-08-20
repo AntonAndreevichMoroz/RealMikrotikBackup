@@ -1,2 +1,2 @@
-FROM n8nio/n8n:0.150.0
+FROM n8nio/n8n:0.190.0
 RUN apk add --no-cache openssh-client sshpass tzdata findutils
