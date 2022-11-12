@@ -285,7 +285,7 @@
       }
     },
     "createdAt": "2021-09-05T17:53:07.492Z",
-    "updatedAt": "2022-08-20T08:17:30.310Z",
+    "updatedAt": "2022-11-12T15:43:03.778Z",
     "settings": {
       "errorWorkflow": "3"
     },
@@ -1604,7 +1604,7 @@
       }
     },
     "createdAt": "2021-11-15T19:15:31.061Z",
-    "updatedAt": "2022-08-20T08:17:30.456Z",
+    "updatedAt": "2022-11-12T15:43:03.798Z",
     "settings": {
       "errorWorkflow": "3"
     },
@@ -1796,7 +1796,7 @@
       }
     },
     "createdAt": "2021-11-27T12:10:40.170Z",
-    "updatedAt": "2022-08-20T08:17:30.464Z",
+    "updatedAt": "2022-11-12T15:43:03.805Z",
     "settings": {},
     "staticData": null,
     "pinData": null,
@@ -2112,7 +2112,7 @@
       }
     },
     "createdAt": "2021-12-02T07:59:06.522Z",
-    "updatedAt": "2022-08-20T08:17:30.472Z",
+    "updatedAt": "2022-11-12T15:43:03.812Z",
     "settings": {
       "saveExecutionProgress": true,
       "saveManualExecutions": true
@@ -2366,7 +2366,7 @@
       }
     },
     "createdAt": "2021-12-03T18:10:27.992Z",
-    "updatedAt": "2022-08-20T08:17:30.480Z",
+    "updatedAt": "2022-11-12T15:43:03.819Z",
     "settings": {
       "saveExecutionProgress": "DEFAULT",
       "errorWorkflow": "3"
@@ -2770,7 +2770,7 @@
       }
     },
     "createdAt": "2021-12-14T09:28:03.807Z",
-    "updatedAt": "2022-08-20T08:17:30.493Z",
+    "updatedAt": "2022-11-12T15:43:03.831Z",
     "settings": {},
     "staticData": null,
     "pinData": null,
@@ -2794,7 +2794,7 @@
       },
       {
         "parameters": {
-          "command": "={{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? 'if (:put [/system routerboard get current-firmware]~\"^7\") do={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '} else={/export hide-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' : 'if (:put [/system routerboard get current-firmware]~\"^7\") do={[:parse \"/export show-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '\"]} else={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' }}",
+          "command": "={{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? 'if (:put [/system resource get version]~\"^7\") do={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '} else={/export hide-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' : 'if (:put [/system resource get version]~\"^7\") do={[:parse \"/export show-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '\"]} else={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' }}",
           "cwd": "={{}}"
         },
         "name": "SSH2",
@@ -3023,7 +3023,7 @@
       {
         "parameters": {
           "authentication": "privateKey",
-          "command": "={{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? 'if (:put [/system routerboard get current-firmware]~\"^7\") do={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '} else={/export hide-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' : 'if (:put [/system routerboard get current-firmware]~\"^7\") do={[:parse \"/export show-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '\"]} else={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' }}",
+          "command": "={{ $env.MK_BACKUP_HIDE_SENSITIVE == \"true\" ? 'if (:put [/system resource get version]~\"^7\") do={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '} else={/export hide-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' : 'if (:put [/system resource get version]~\"^7\") do={[:parse \"/export show-sensitive file=' + $node[\"Start\"].json[\"filenamersc\"] + '\"]} else={/export file=' + $node[\"Start\"].json[\"filenamersc\"] + '}' }}",
           "cwd": "={{}}"
         },
         "name": "SSH",
@@ -3498,7 +3498,7 @@
       }
     },
     "createdAt": "2021-12-18T14:59:02.109Z",
-    "updatedAt": "2022-08-20T08:19:12.517Z",
+    "updatedAt": "2022-11-12T15:57:00.493Z",
     "settings": {
       "saveExecutionProgress": true,
       "saveManualExecutions": true,
@@ -4110,7 +4110,7 @@
       }
     },
     "createdAt": "2021-12-18T15:22:00.567Z",
-    "updatedAt": "2022-08-20T08:17:30.511Z",
+    "updatedAt": "2022-11-12T15:43:03.845Z",
     "settings": {
       "saveExecutionProgress": true,
       "saveManualExecutions": true,
@@ -4239,7 +4239,7 @@
       }
     },
     "createdAt": "2022-03-12T05:39:01.228Z",
-    "updatedAt": "2022-08-20T08:17:30.524Z",
+    "updatedAt": "2022-11-12T15:43:03.856Z",
     "settings": {
       "saveExecutionProgress": true,
       "saveManualExecutions": true
