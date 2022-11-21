@@ -61,6 +61,7 @@ services:
     restart: always
     stop_grace_period: 60s
     environment:
+      - EXECUTIONS_PROCESS=main
       - N8N_USER_MANAGEMENT_DISABLED=true
       - LANG=ru_RU.UTF-8
       - LANGUAGE=ru_RU:en
