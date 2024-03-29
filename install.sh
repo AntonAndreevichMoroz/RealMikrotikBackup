@@ -1,6 +1,12 @@
 RED='\033[0;31m'
 NC='\033[0m'
 
+# Check if the script is being run as root
+if [ "$UID" -ne 0 ]; then
+    echo "Этот скрипт нужно запускать от root. Выходим..."
+    exit 1
+fi
+
 border () {
     local str="$*"      # Put all arguments into single string
     local len=${#str}
@@ -57,9 +63,9 @@ border Установка переменных в .env
 border Запуск Docker контейнеров
 if [[ $advanced == "1" ]]
 then
-	docker-compose -f docker-compose-advanced.yml up --build -d
+	sudo docker-compose -f docker-compose-advanced.yml up --build -d
 else
-	docker-compose up --build -d
+	sudo docker-compose up --build -d
 fi
 
 #Инициализация базы данных
@@ -67,7 +73,7 @@ border Инициализация базы данных
 while :
 do
 	sleep 5
-	docker exec -it rmb-web yii migrate --interactive=0
+	sudo docker exec -it rmb-web yii migrate --interactive=0
 	if [[ $? -eq 0 ]]
 	then
 		break
